@@ -7,8 +7,6 @@ exports.loginUser = async (req, res) => {
         const userPayload = req.body;
         const user = findUser(userPayload.email);
 
-        let result = await bcrypt.compare(userPayload.password, user.password);
-
         if(!user || !(await bcrypt.compare(userPayload.password, user.password))) {
             res.status(401).send('Credenciales inválidas');
             return;      
