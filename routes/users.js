@@ -2,12 +2,13 @@ const express = require('express');
 
 const router = express.Router();
 
-const { loginUser } = require('../controllers/users');
+const { loginUser, logoutUser } = require('../controllers/users');
 const { checkUserIsAuthenticated } = require('../middlewares/auth');
 const { validateSchema } = require("../middlewares/validation");
 const { loginSchema } = require('../validators/users');
 
 router.route('/login').post([validateSchema(loginSchema)], loginUser);
+router.route('/:id/logout').delete([checkUserIsAuthenticated], logoutUser);
 
 module.exports = router;
 

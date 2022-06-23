@@ -12,7 +12,7 @@ exports.loginUser = async (req, res) => {
             return;      
         }
 
-        const token = jwt.sign({ id: user.id, isAuthenticated: true }, process.env.JWT_KEY, { expiresIn: '7d' });
+        const token = jwt.sign({ id: user.id, isAuthenticated: true }, process.env.JWT_KEY, { expiresIn: '1d' });
 
         delete user.password;
 
@@ -23,4 +23,8 @@ exports.loginUser = async (req, res) => {
     }catch(error){
         res.status(500).send('Error del servidor ' + error);
     }
+}
+
+exports.logoutUser = (req, res) => {
+    res.status(200).send('Cierre de sesión exitoso');
 }
