@@ -17,7 +17,7 @@ exports.upload = multer({
         acl: 'public-read',
         bucket: 'ci0137',
         key: function (req, file, cb){
-            cb(null, `swap-it/uploads/${uuidv4()}${file.originalname.substring(file.originalname.lastIndexOf("."))}`);
+            cb(null, `swap-it/uploads/${req.filename ? req.filename : uuidv4() + file.originalname.substring(file.originalname.lastIndexOf("."))}`);
         }
     })
 });
