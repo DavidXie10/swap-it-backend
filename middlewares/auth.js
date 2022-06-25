@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { findUser } = require('../utils/constants');
+const { findUserById } = require('../utils/constants');
 
 exports.checkUserIsAuthenticated = async(req, res, next) => {
     let token;
@@ -14,7 +14,7 @@ exports.checkUserIsAuthenticated = async(req, res, next) => {
         }else{
             try {
                 const decodedToken = jwt.verify(token, process.env.JWT_KEY);
-                const user = findUser(decodedToken.username);
+                const user = findUserById(decodedToken.id);
                 if(!user){
                     res.status(401).json({
                         error: true,
@@ -26,7 +26,7 @@ exports.checkUserIsAuthenticated = async(req, res, next) => {
             } catch (error) {
                 res.status(400).json({
                     error: true,
-                    message: 'La información enviada no es válida. Verifique que su sesión no haya expirado.',
+                    message: 'La información enviada no es válida. Verifique que su sesión no haya expirado.' + error,
                 });
             }
         }
