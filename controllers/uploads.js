@@ -31,7 +31,7 @@ exports.deleteUrls = (req, res) => {
         const result = deleteInS3(urls);        
         if(result){
             res.status(200).json({
-                message: `Archivos eliminados exitosamente`,
+                message: `Archivos eliminados exitosamente.`,
             });
         }
     } catch (error) {
