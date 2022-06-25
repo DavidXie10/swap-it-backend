@@ -17,7 +17,7 @@ exports.uploadFiles = (req, res) => {
             uploadedFiles: uploadedFiles,    
         });
     }else{
-        res.status(400).json({ error: true, message: 'Se necesita subir al menos un archivo y un máximo de 5.' });
+        res.status(400).json({ error: true, message: 'Se necesita subir al menos una imagen en formato .png, .jpg o .jpeg' });
     }
 };
 
