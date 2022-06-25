@@ -1,7 +1,11 @@
 const users = require('../data/users.json');
 
-const findUser = (email) => {
+const findUserByEmail = (email) => {
     return users.find(user => user.email === email);
 }
 
-module.exports = {users, findUser}
+const findUserById = (id) => {
+    return users.find(user => user.id === id);
+}
+
+module.exports = {users, findUserByEmail, findUserById}
