@@ -17,9 +17,7 @@ exports.uploadFiles = (req, res) => {
             uploadedFiles: uploadedFiles,    
         });
     }else{
-        res.status(500).json({
-            message: 'Error interno del servidor',    
-        });
+        res.status(400).json({ error: true, message: 'Se necesita subir al menos un archivo y un máximo de 5.' });
     }
 };
 

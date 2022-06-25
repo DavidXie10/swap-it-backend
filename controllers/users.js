@@ -26,7 +26,7 @@ exports.loginUser = async (req, res) => {
 }
 
 exports.logoutUser = (req, res) => {
-    res.status(200).send('Cierre de sesión exitoso');
+    res.status(200).send('Cierre de sesión exitoso para el usuario ' + req.params.id);
 }
 
 exports.updateUser = (req, res) => {
