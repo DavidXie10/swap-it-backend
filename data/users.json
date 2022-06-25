@@ -5,7 +5,7 @@
     	"fullName": "David Xie Li",
         "email": "davidxieli@gmail.com",
         "location": 1,
-        "phoneNumber": 86808521,
+        "phoneNumber": "86808521",
         "photoUrl": ""
     },
     {
@@ -14,7 +14,7 @@
     	"fullName": "Juan Ignacio Pacheco Castro",
         "email": "",
         "location": 1,
-        "phoneNumber": 1,
+        "phoneNumber": "1",
         "photoUrl": ""
     },
     {
@@ -23,7 +23,7 @@
     	"fullName": "Sol Valle Vega",
         "email": "",
         "location": 1,
-        "phoneNumber": 1,
+        "phoneNumber": "1",
         "photoUrl": ""
     },
     {
@@ -32,7 +32,7 @@
     	"fullName": "testing fullname",
         "email": "test@test.com",
         "location": 2,
-        "phoneNumber": 11425871,
+        "phoneNumber": "11425871",
         "photoUrl": ""
     }
 ]
