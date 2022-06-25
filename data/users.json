@@ -1,0 +1,38 @@
+[
+    {
+        "id": "1",
+        "password": "$2b$10$bnoubOn6tH/bPKzmvKyNzuxIZ5B6fHNrXdtAKcVd8O9ctCzvLkqpi",
+    	"fullName": "David Xie Li",
+        "email": "davidxieli@gmail.com",
+        "location": 1,
+        "phoneNumber": "86808521",
+        "photoUrl": ""
+    },
+    {
+        "id": "2",
+        "password": "$2b$10$bnoubOn6tH/bPKzmvKyNzuxIZ5B6fHNrXdtAKcVd8O9ctCzvLkqpi",
+    	"fullName": "Juan Ignacio Pacheco Castro",
+        "email": "",
+        "location": 1,
+        "phoneNumber": "1",
+        "photoUrl": ""
+    },
+    {
+        "id": "3",
+        "password": "$2b$10$bnoubOn6tH/bPKzmvKyNzuxIZ5B6fHNrXdtAKcVd8O9ctCzvLkqpi",
+    	"fullName": "Sol Valle Vega",
+        "email": "vallesol07@gmail.com",
+        "location": 1,
+        "phoneNumber": "1",
+        "photoUrl": ""
+    },
+    {
+        "id": "4",
+        "password": "test",
+    	"fullName": "testing fullname",
+        "email": "test@test.com",
+        "location": 2,
+        "phoneNumber": "11425871",
+        "photoUrl": ""
+    }
+]
