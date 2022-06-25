@@ -28,10 +28,11 @@ exports.deleteUrls = (req, res) => {
     try {
         const userPayload = req.body;
         const urls = userPayload.urls;
-        const result = deleteInS3(urls);        
+        const isArray = Array.isArray(urls);
+        const result = deleteInS3(urls);  
         if(result){
             res.status(200).json({
-                message: `Archivos eliminados exitosamente.`,
+                message: `Archivo${isArray ? 's' : ''} eliminado${isArray ? 's' : ''} exitosamente.`,
             });
         }
     } catch (error) {
