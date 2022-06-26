@@ -46,3 +46,19 @@ exports.editItem = (req, res) => {
         res.status(500).json({message: 'Ocurrió un error al editar el artículo. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: ' + error});
     }
 };
+
+exports.deleteItem = (req, res) => {
+    try {
+        // TODO: change to find item by item id
+        //const itemId = req.params.id;
+        //const exists = findItemById(itemId);
+        const exists = true;
+        if (exists){
+            res.status(204).send();
+        }else{
+            res.status(404).send('El item que se quiere eliminar no se encuentra.');
+        }
+    } catch (error) {
+        res.status(500).json({message: 'Ocurrió un error al eliminar el artículo. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: ' + error});
+    }
+};
