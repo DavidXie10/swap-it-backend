@@ -2,10 +2,10 @@ const express = require('express');
 
 const router = express.Router();
 
-const { loginUser, logoutUser, updateUser, deleteProfilePhoto } = require('../controllers/users');
+const { loginUser, logoutUser, updateUser } = require('../controllers/users');
 const { checkUserIsAuthenticated } = require('../middlewares/auth');
 const { validateSchema } = require("../middlewares/validation");
-const { loginSchema, updateUserSchema, urlSchema } = require('../validators/users');
+const { loginSchema, updateUserSchema } = require('../validators/users');
 
 router.route('/login').post([validateSchema(loginSchema)], loginUser);
 router.route('/:id/logout').delete([checkUserIsAuthenticated], logoutUser);
