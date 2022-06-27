@@ -1,6 +1,6 @@
 [
     {
-        "idItem": 1,
+        "itemId": 1,
         "ownerFullName": "Sol Valle Vega",
     	"ownerUserId": 3,
         "name": "Iphone 12",
@@ -13,7 +13,7 @@
         "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/24751111-3d23-4915-8a13-d1d551c23c3d.jpg","https://ci0137.s3.amazonaws.com/swap-it/uploads/a64ebe3d-de42-4bd4-854b-688e8ef88729.jpg","https://ci0137.s3.amazonaws.com/swap-it/uploads/faac1354-e5ea-4373-9cee-e45582cb8c85.jpg"]
     },
     {
-        "idItem": 2,
+        "itemId": 2,
         "ownerFullName": "Sol Valle Vega",
     	"ownerUserId": 3,
         "name": "Smart TV Xiami",
@@ -26,7 +26,7 @@
         "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/347b5747-afeb-4161-a262-53bf8a039f34.jpg"]
     },
     {
-        "idItem": 3,
+        "itemId": 3,
         "ownerFullName": "Sol Valle Vega",
     	"ownerUserId": 3,
         "name": "Smart Watch",
@@ -39,7 +39,7 @@
         "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/57ddb099-0d55-457d-9ccc-fa8c0ae1cdb8.jpg","https://ci0137.s3.amazonaws.com/swap-it/uploads/44fbf08f-60d5-407c-bb1c-9755da322115.jpg"]
     },
     {
-        "idItem": 4,
+        "itemId": 4,
         "ownerFullName": "Juan Ignacio Pacheco Castro",
     	"ownerUserId": 2,
         "name": "Audífonos Inalámbricos",
@@ -52,7 +52,7 @@
         "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/347b5747-afeb-4161-a262-53bf8a039f34.jpg"]
     },
     {
-        "idItem": 5,
+        "itemId": 5,
         "ownerFullName": "Juan Ignacio Pacheco Castro",
     	"ownerUserId": 2,
         "name": "Cámara GoPro",
@@ -65,7 +65,7 @@
         "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/887e8267-e28b-4ab9-9607-412a0b9c7833.jpg","https://ci0137.s3.amazonaws.com/swap-it/uploads/52d4f3ac-3bda-4c0b-8f5b-ae5cf3800bf3.jpg","https://ci0137.s3.amazonaws.com/swap-it/uploads/b113319e-5c08-4fa4-8adb-940dd68e6a05.jpg"]
     },
     {
-        "idItem": 6,
+        "itemId": 6,
         "ownerFullName": "Juan Ignacio Pacheco Castro",
     	"ownerUserId": 2,
         "name": "Cartucho de tinta para impresora HP 65",
@@ -78,7 +78,7 @@
         "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/668f8511-70b6-4668-afbe-19f1bcc7960c.jpg"]
     },
     {
-        "idItem": 7,
+        "itemId": 7,
         "ownerFullName": "David Xie Li",
     	"ownerUserId": 1,
         "name": "Cartucho de tinta HP 63",
@@ -91,7 +91,7 @@
         "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/de88db13-acad-40c6-a872-df67766bcb3c.jpg"]
     },
     {
-        "idItem": 8,
+        "itemId": 8,
         "ownerFullName": "Sol Valle Vega",
     	"ownerUserId": 3,
         "name": "Mouse inalámbrico Logitech K/DA",
@@ -104,7 +104,7 @@
         "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/ced7ad01-ec93-4eef-97f1-fa0b1bae9ff0.jpg"]
     },
     {
-        "idItem": 9,
+        "itemId": 9,
         "ownerFullName": "David Xie Li",
     	"ownerUserId": 1,
         "name": "Cámara web",
@@ -117,7 +117,7 @@
         "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/9585387f-cbab-4477-b3ae-4949fe99a1db.jpg"]
     },
     {
-        "idItem": 10,
+        "itemId": 10,
         "ownerFullName": "David Xie Li",
     	"ownerUserId": 1,
         "name": "AMD Ryzen 5 5600G",
@@ -130,7 +130,7 @@
         "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/fd472d4c-b046-41ac-b1ee-4d8613f4e269.jpg"]
     },
     {
-        "idItem": 11,
+        "itemId": 11,
         "ownerFullName": "Sol Valle Vega",
     	"ownerUserId": 3,
         "name": "Inflador de bicicleta portátil",
@@ -143,7 +143,7 @@
         "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/53ffb203-41ea-4060-bd08-0fe38eace528.jpg","https://ci0137.s3.amazonaws.com/swap-it/uploads/3d1d2168-bfc6-4453-8be8-a678498e10e8.jpg"]
     },
     {
-        "idItem": 12,
+        "itemId": 12,
         "ownerFullName": "Juan Ignacio Pacheco Castro",
     	"ownerUserId": 2,
         "name": "Gafas de natación Speedo",
@@ -156,7 +156,7 @@
         "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/2c8c905c-b1aa-4759-b59c-fb7669a8b644.jpg"]
     },
     {
-        "idItem": 13,
+        "itemId": 13,
         "ownerFullName": "Juan Ignacio Pacheco Catro",
     	"ownerUserId": 2,
         "name": "Freidora de aire COSORI",
@@ -169,7 +169,7 @@
         "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/25de1673-e272-4f1a-9d72-3384029fe9f6.jpg","https://ci0137.s3.amazonaws.com/swap-it/uploads/91295838-cd2a-4c56-814b-0b665428062a.jpg","https://ci0137.s3.amazonaws.com/swap-it/uploads/7cb4d71d-b65c-4f3d-9b27-53c19f48e30d.jpg"]
     },
     {
-        "idItem": 14,
+        "itemId": 14,
         "ownerFullName": "David Xie Li",
     	"ownerUserId": 1,
         "name": "Cafetera",
@@ -182,7 +182,7 @@
         "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/960e5743-1fec-44a6-999e-c1aa0cef3961.jpg","https://ci0137.s3.amazonaws.com/swap-it/uploads/ee841957-ef66-4d98-a7b5-8ba134eedc1b.jpg"]
     },
     {
-        "idItem": 15,
+        "itemId": 15,
         "ownerFullName": "David Xie Li",
     	"ownerUserId": 1,
         "name": "Don Quijote de la Mancha",
@@ -195,7 +195,7 @@
         "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/a41d488c-fe5d-4c37-bfd6-2dfc8c041f13.jpg","https://ci0137.s3.amazonaws.com/swap-it/uploads/1995172c-2ae9-491d-bab4-c28f27a64e60.jpg"]
     },
     {
-        "idItem": 16,
+        "itemId": 16,
         "ownerFullName": "Sol Valle Vega",
     	"ownerUserId": 3,
         "name": "Saga de Libros de Harry Potter",
@@ -208,7 +208,7 @@
         "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/0c6d4ce2-9ab4-4409-b39d-c147514cf43d.jpg"]
     },
     {
-        "idItem": 17,
+        "itemId": 17,
         "ownerFullName": "Juan Ignacio Pacheco Castro",
     	"ownerUserId": 2,
         "name": "Organizador de escritorio",
@@ -221,7 +221,7 @@
         "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/9d933524-ecd4-45b9-b356-a0fd51d566a7.jpg"]
     },
     {
-        "idItem": 18,
+        "itemId": 18,
         "ownerFullName": "David Xie Li",
     	"ownerUserId": 1,
         "name": "Silla para oficina",
@@ -234,7 +234,7 @@
         "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/956b6d2c-b756-42e2-b3ab-f4c47bb12262.jpg"]
     },
     {
-        "idItem": 19,
+        "itemId": 19,
         "ownerFullName": "Sol Valle Vega",
     	"ownerUserId": 3,
         "name": "Sudadera Blanca",
@@ -247,7 +247,7 @@
         "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/7509e0ae-9d33-4ec9-a5b4-90b04b785ed3.jpg","https://ci0137.s3.amazonaws.com/swap-it/uploads/34955a92-0058-41ed-b98b-c8264b4fab97.jpg"]
     },
     {
-        "idItem": 20,
+        "itemId": 20,
         "ownerFullName": "David Xie Li",
     	"ownerUserId": 1,
         "name": "Short Nike",
@@ -260,7 +260,7 @@
         "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/c2ec9944-ebfd-41d3-a25b-44cf5576418a.jpg"]
     },
     {
-        "idItem": 21,
+        "itemId": 21,
         "ownerFullName": "Juan Ignacio Pacheco Castro",
     	"ownerUserId": 2,
         "name": "Control de Play 5",
@@ -273,7 +273,7 @@
         "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/0bd901a9-2388-4100-9515-5e4771227d27.jpg","https://ci0137.s3.amazonaws.com/swap-it/uploads/90ff28ae-d1f5-42ff-a8cb-2a74129a5a7d.jpg"]
     },
     {
-        "idItem": 22,
+        "itemId": 22,
         "ownerFullName": "Sol Valle Vega",
     	"ownerUserId": 3,
         "name": "Nintendo Switch v2",
@@ -286,7 +286,7 @@
         "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/4495358f-3a34-42d6-92d4-1ec3d0adbce5.jpg","https://ci0137.s3.amazonaws.com/swap-it/uploads/90b422c4-f788-4b5e-9857-e163f484080c.jpg","https://ci0137.s3.amazonaws.com/swap-it/uploads/e7b395c7-bb14-41ed-9b89-9d62eb54a225.jpg"]
     },
     {
-        "idItem": 23,
+        "itemId": 23,
         "ownerFullName": "David Xie Li",
     	"ownerUserId": 1,
         "name": "The Last of Us PS5",
@@ -299,7 +299,7 @@
         "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/71f61c0c-cc3c-4e2f-9a5b-0e1a922e5741.jpg"]
     },
     {
-        "idItem": 24,
+        "itemId": 24,
         "ownerFullName": "Sol Valle Vega",
     	"ownerUserId": 3,
         "name": "Mario Party Superstars (Nintendo Switch)",
@@ -312,7 +312,7 @@
         "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/1a8999b5-0a1d-4762-b6eb-3c056ea1473e.jpg"]
     },
     {
-        "idItem": 25,
+        "itemId": 25,
         "ownerFullName": "Juan Ignacio Pacheco Castro",
     	"ownerUserId": 2,
         "name": "Spider-Man: No Way Home",
@@ -325,7 +325,7 @@
         "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/76d715c5-0c1e-4302-810d-a0d0be3d53ee.jpg"]
     },
     {
-        "idItem": 26,
+        "itemId": 26,
         "ownerFullName": "David Xie Li",
     	"ownerUserId": 1,
         "name": "Joker",
@@ -338,7 +338,7 @@
         "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/ec7b2f4c-ceef-467d-af63-7f605ec8b444.jpg"]
     },
     {
-        "idItem": 27,
+        "itemId": 27,
         "ownerFullName": "Juan Ignacio Pacheco Castro",
     	"ownerUserId": 2,
         "name": "Protector impermeable para carro",
@@ -351,7 +351,7 @@
         "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/08860b49-582e-408d-ad72-abd80263b327.jpg"]
     },
     {
-        "idItem": 28,
+        "itemId": 28,
         "ownerFullName": "David Xie Li",
     	"ownerUserId": 1 ,
         "name": "Llantas",
@@ -364,7 +364,7 @@
         "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/03fe7e84-fcf5-41c5-a021-7dc2d529d45d.jpg0"]
     },
     {
-        "idItem": 29,
+        "itemId": 29,
         "ownerFullName": "Juan Ignacio Pacheco Castro",
     	"ownerUserId": 2,
         "name": "Cuadro 3D de abedul blanco",
@@ -377,7 +377,7 @@
         "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/88ca4b02-43e5-4a44-a4fd-ff76efab5eb1.jpg"]
     },
     {
-        "idItem": 30,
+        "itemId": 30,
         "ownerFullName": "Sol Valle Vega",
     	"ownerUserId": 3,
         "name": "Maleta",
