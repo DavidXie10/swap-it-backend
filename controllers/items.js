@@ -1,5 +1,13 @@
 const jwt = require('jsonwebtoken');
-const { findUserById } = require("../utils/constants");
+const { items, findItemById, findItemsByCategory, findUserById } = require("../utils/constants");
+
+exports.getAllItems = (req, res) => {
+    try {
+        res.json(items);
+    } catch (error) {
+        res.status(500).json({message: 'Ocurrió un error al cargar el catálogo. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: ' + error});
+    }
+}
 
 exports.createNewItem = (req, res) => {
     try {
@@ -22,6 +30,33 @@ exports.createNewItem = (req, res) => {
         res.status(500).json({message: 'Ocurrió un error al crear el artículo. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: ' + error});
     }
 };
+
+exports.getItem = (req, res) => {
+    try {
+        const item = findItemById(req.params.id);
+        if(!item){
+            res.status(404).send('Producto no encontrado');
+            return;
+        }
+        res.json(item);
+    } catch (error) {
+        res.status(500).json({message: 'Ocurrió un error al cargar el artículo. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: ' + error});
+    }
+}
+
+exports.getItemsByCategory = (req, res) => {
+    try {
+        const category = req.params.categoryId;
+        if(category == 0)
+            res.json(items);
+        else {
+            const itemsByCategory = findItemsByCategory(category);
+            res.json(itemsByCategory);
+        }
+    } catch (error) {
+        res.status(500).json({message: 'Ocurrió un error al cargar los artículos. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: ' + error});
+    }
+}
 
 exports.editItem = (req, res) => {
     try {
