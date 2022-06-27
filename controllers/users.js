@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const { findUserByEmail, findUserById } = require('../utils/constants');
+const { findUserByEmail, findUserById, findItemsByUser } = require('../utils/constants');
 
 exports.loginUser = async (req, res) => {
     try{
@@ -44,6 +44,16 @@ exports.updateUser = (req, res) => {
         }
     } catch(error) {
         res.status(500).send('Error del servidor ' + error);
+    }
+}
+
+
+exports.getItemsByUser = (req, res) => {
+    try {
+        const items = findItemsByUser(req.params.userId);
+        res.json(items);
+    } catch (error) {
+        res.status(500).json({message: 'Ocurrió un error al cargar los artículos del usuario. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: ' + error});
     }
 }
 

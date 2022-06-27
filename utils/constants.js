@@ -22,4 +22,13 @@ const findItemsByCategory = (category) => {
     return itemsByCategory;
 }
 
-module.exports = {users, items, findUserByEmail, findUserById, findItemById, findItemsByCategory}
+const findItemsByUser = (userId) => {
+    let itemsByUser = [];
+    items.map(item => {
+        if(item.ownerUserId == userId)
+            itemsByUser.push(item);
+    })
+    return itemsByUser;
+}
+
+module.exports = {users, items, findUserByEmail, findUserById, findItemById, findItemsByCategory, findItemsByUser}
