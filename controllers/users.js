@@ -40,7 +40,7 @@ exports.updateUser = (req, res) => {
             return;   
         }
         if(updateUserData(user, userPayload)){
-            res.status(204).json(userPayload);
+            res.status(200).json(userPayload);
         }
     } catch(error) {
         res.status(500).send('Error del servidor ' + error);
