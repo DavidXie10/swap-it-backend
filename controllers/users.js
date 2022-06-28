@@ -6,15 +6,13 @@ exports.loginUser = async (req, res) => {
     try{
         const userPayload = req.body;
         const user = findUserByEmail(userPayload.email);
-
+        console.log(user);
         if(!user || !(await bcrypt.compare(userPayload.password, user.password))) {
             res.status(401).send('Credenciales inválidas');
             return;      
         }
 
         const token = jwt.sign({ id: user.id, isAuthenticated: true }, process.env.JWT_KEY, { expiresIn: '1d' });
-
-        delete user.password;
 
         res.json({
             ...user,
