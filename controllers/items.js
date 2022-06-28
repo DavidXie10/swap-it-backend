@@ -61,19 +61,19 @@ exports.getItemsByCategory = (req, res) => {
 exports.editItem = (req, res) => {
     try {
         const userPayload = req.body;
-        const token = req.headers.authorization.split(' ')[1];
-        const decodedToken = jwt.verify(token, process.env.JWT_KEY);
-        const userId = decodedToken.id;
-        const user = findUserById(userId);
-
-        // TODO: change to find item by item id
         const itemId = req.params.id;
+        const item = findItemById(itemId);
+
+        if(!item){
+            res.status(404).send('Producto no encontrado');
+            return;
+        }
 
         res.status(200).json({
             message: 'Item editado exitosamente.',
             item: {
-                ownerUserId: userId,
-                ownerFullName: user.fullName,
+                ownerUserId: item.ownerUserId,
+                ownerFullName: item.ownerFullName,
                 ...userPayload,
             }
         });
@@ -84,10 +84,9 @@ exports.editItem = (req, res) => {
 
 exports.deleteItem = (req, res) => {
     try {
-        // TODO: change to find item by item id
-        //const itemId = req.params.id;
-        //const exists = findItemById(itemId);
-        const exists = true;
+        const itemId = req.params.id;
+        const exists = findItemById(itemId);
+        
         if (exists){
             res.status(204).send();
         }else{
