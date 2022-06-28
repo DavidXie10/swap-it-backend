@@ -26,7 +26,7 @@ exports.loginUser = async (req, res) => {
 }
 
 exports.logoutUser = (req, res) => {
-    res.status(200).send('Cierre de sesión exitoso');
+    res.status(200).send('Cierre de sesión exitoso para el usuario ' + req.params.id);
 }
 
 exports.updateUser = (req, res) => {
@@ -47,7 +47,6 @@ exports.updateUser = (req, res) => {
     }
 }
 
-
 exports.getItemsByUser = (req, res) => {
     try {
         const items = findItemsByUser(req.params.userId);
@@ -56,4 +55,3 @@ exports.getItemsByUser = (req, res) => {
         res.status(500).json({message: 'Ocurrió un error al cargar los artículos del usuario. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: ' + error});
     }
 }
-

@@ -1,6 +1,6 @@
 [
     {
-        "id": "1",
+        "id": 1,
         "password": "$2b$10$bnoubOn6tH/bPKzmvKyNzuxIZ5B6fHNrXdtAKcVd8O9ctCzvLkqpi",
     	"fullName": "David Xie Li",
         "email": "davidxieli@gmail.com",
@@ -9,16 +9,16 @@
         "photoUrl": ""
     },
     {
-        "id": "2",
+        "id": 2,
         "password": "$2b$10$bnoubOn6tH/bPKzmvKyNzuxIZ5B6fHNrXdtAKcVd8O9ctCzvLkqpi",
     	"fullName": "Juan Ignacio Pacheco Castro",
-        "email": "",
+        "email": "juanipacas@gmail.com",
         "location": 1,
         "phoneNumber": "1",
         "photoUrl": ""
     },
     {
-        "id": "3",
+        "id": 3,
         "password": "$2b$10$bnoubOn6tH/bPKzmvKyNzuxIZ5B6fHNrXdtAKcVd8O9ctCzvLkqpi",
     	"fullName": "Sol Valle Vega",
         "email": "vallesol07@gmail.com",
@@ -27,7 +27,7 @@
         "photoUrl": "https://ci0137.s3.amazonaws.com/swap-it/uploads/sol_profile_photo.jpg"
     },
     {
-        "id": "4",
+        "id": 4,
         "password": "test",
     	"fullName": "testing fullname",
         "email": "test@test.com",

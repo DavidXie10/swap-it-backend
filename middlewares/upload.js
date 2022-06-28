@@ -17,7 +17,23 @@ exports.upload = multer({
         acl: 'public-read',
         bucket: 'ci0137',
         key: function (req, file, cb){
-            cb(null, `swap-it/uploads/${uuidv4()}${file.originalname.substring(file.originalname.lastIndexOf("."))}`);
+            cb(null, `swap-it/uploads/${req.body.filename ? req.body.filename : uuidv4() + file.originalname.substring(file.originalname.lastIndexOf("."))}`);
         }
-    })
+    }),
+    fileFilter: function (req, file, callback) {
+        const extension = file.originalname.substring(file.originalname.lastIndexOf("."));
+        if(extension !== '.png' && extension !== '.jpg' && extension !== '.jpeg') {
+            callback(new Error(''));
+            return;
+        }
+        callback(null, true);
+    },
 });
+
+exports.uploadsErrorHandler = (error, req, res, next) => {
+    if (error) {
+        res.status(400).json({ error: true, message: 'Solo se puede subir un máximo de 3 imágenes y solo se permiten subir imágenes .png, .jpg o .jpeg.'})
+    } else {
+        next();
+    }
+}

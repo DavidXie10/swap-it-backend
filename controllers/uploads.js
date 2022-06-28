@@ -12,14 +12,32 @@ exports.uploadFiles = (req, res) => {
             });
         });
     
-        res.status(200).send({
-            message: "Uploaded files!",
+        res.status(200).json({
+            message: '¡Archivos cargados exitosamente!',
             uploadedFiles: uploadedFiles,    
         });
     }else{
-        res.status(500).send({
-            error: true,
-            message: 'Internal Server Error',    
-        });
+        res.status(400).json({ error: true, message: 'Se necesita subir al menos una imagen en formato .png, .jpg o .jpeg' });
+    }
+};
+
+exports.deleteUrls = (req, res) => {
+    // This function is to simulate the deletion of the url image in the S3 storage
+    const deleteInS3 = (urls) => true;
+
+    try {
+        const userPayload = req.body;
+        const urls = userPayload.urls;
+        const isArray = Array.isArray(urls);
+        const result = deleteInS3(urls);  
+        if(result){
+            res.status(200).json({
+                message: `Archivo${isArray ? 's' : ''} eliminado${isArray ? 's' : ''} exitosamente.`,
+            });
+        }
+    } catch (error) {
+        res.status(500).json({
+            message: 'Error interno del servidor ' + error,    
+        });   
     }
 };
