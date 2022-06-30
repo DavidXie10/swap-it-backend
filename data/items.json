@@ -1,8 +1,8 @@
 [
     {
         "itemId": 1,
-        "ownerFullName": "Sol Valle Vega",
-    	"ownerUserId": 3,
+        "ownerFullName": "David Xie Li",
+    	"ownerUserId": 1,
         "name": "Iphone 12",
         "location": 4,
         "acquisitionDate": "2022-01-15",
@@ -16,7 +16,7 @@
         "itemId": 2,
         "ownerFullName": "Sol Valle Vega",
     	"ownerUserId": 3,
-        "name": "Smart TV Xiami",
+        "name": "Smart TV Xiaomi",
         "location": 4,
         "acquisitionDate": "2022-05-22",
         "description": "Pantalla smart TV de 43 pulgadas con todos sus accesorios (cables, patas, brazo para pegar en la pared)",
