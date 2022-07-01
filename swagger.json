@@ -1,0 +1,1257 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Swap It - API",
+    "description": "Este es el API del proyecto del curso de Desarrollo de Aplicaciones Web (CI-0137) de la aplicación Swap It",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Swap it team",
+      "email": "swapitecci@gmail.com",
+      "url": "https://github.com/DavidXie10/swap-it-ui"
+    }
+  },
+  "host": "localhost:8000",
+  "basePath": "/",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "paths": {
+    "/users/login": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Login an existing user to use the application. A token is returned with the necessary information to authenticate the user in future requests. The user data is also returned",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "User credentials",
+            "schema": {
+              "$ref": "#/definitions/LoginUser"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User successfully logged in into the app",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 1
+                },
+                "password": {
+                  "type": "string",
+                  "example": "$4f4dgdfdgdbgyvycuvhlrmjgfndgjnfgdfmglfmglñfmlgmgfds88445fsf"
+                },
+                "fullName": {
+                  "type": "string",
+                  "example": "John Doe"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "john@correo.com"
+                },
+                "location": {
+                  "type": "number",
+                  "example": 1
+                },
+                "phoneNumber": {
+                  "type": "string",
+                  "example": "86808521"
+                },
+                "photoUrl": {
+                  "type": "string",
+                  "example": "http://t1.gstatic.com/licensed-image?q=tbn:ANd9GcTzXP8yS66xjGHKpFXxFA5oSAh0AjA8xPRcU7I88COgApoIfvdk0kenagYFoJhN6u-I"
+                },
+                "token": {
+                  "type": "string",
+                  "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaXNBdXRoZW50aWNhdGVkIjp0cnVlLCJpYXQiOjE2NTY1Mzg0MzUsImV4cCI6MTY1NjcxMTIzNX0.gwyF47Lf5v6iO6_Rz4ta8EhOmLY47ht6ClRI7bb22zw"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized user because of invalid credentials",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Credenciales inválidas"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "body": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string",
+                      "example": "John Doe"
+                    },
+                    "password": {
+                      "type": "string",
+                      "example": "prueba1234"
+                    }
+                  }
+                },
+                "error": {
+                  "type": "string",
+                  "example": "El email debe tener el formato de un correo electrónico y es requerido."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Ocurrió un error al realizar inicio de sesión. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: el servidor no responde"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}/logout": {
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Logout the user from the application",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The id of the user that is logging out from the app"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User successfully logged out of the app",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Cierre de sesión exitoso para el usuario 1"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized. User is not authenticated",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "message": {
+                  "type": "string",
+                  "example": "El usuario no está autenticado"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "patch": {
+        "tags": [
+          "Users"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/users/{userId}/items": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/uploads/": {
+      "post": {
+        "tags": [
+          "Uploads"
+        ],
+        "description": "Upload a minimum of 1 image and a maximum of 3 and get the urls, types and sizes of the uploaded images",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "multFiles",
+            "in": "formData",
+            "type": "array",
+            "required": true,
+            "description": "Image files to be uploaded",
+            "collectionFormat": "multi",
+            "items": {
+              "type": "file"
+            },
+            "schema": {
+              "$ref": "#/definitions/UploadFiles"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully uploaded the provided images. It returns an array of file attributes",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "¡Archivos cargados exitosamente!"
+                },
+                "uploadedFiles": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "url": {
+                        "type": "string",
+                        "example": "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename.jpg"
+                      },
+                      "type": {
+                        "type": "string",
+                        "example": "image/jpeg"
+                      },
+                      "size": {
+                        "type": "number",
+                        "example": 34445
+                      }
+                    }
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. An image file is nedded",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Se necesita subir al menos una imagen en formato .png, .jpg o .jpeg"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. User is not authenticated",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "message": {
+                  "type": "string",
+                  "example": "El usuario no está autenticado"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Ocurrió un error al subir las imágenes. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: el servidor no responde"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Uploads"
+        ],
+        "description": "Delete uploaded images by passing their urls",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "The array of urls to be deleted",
+            "schema": {
+              "$ref": "#/definitions/DeleteUrls"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully deleted the provided images urls",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "¡Archivos eliminados exitosamente!"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized. User is not authenticated",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "message": {
+                  "type": "string",
+                  "example": "El usuario no está autenticado"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "body": {
+                  "type": "object",
+                  "properties": {
+                    "urls": {
+                      "type": "array",
+                      "example": [
+                        "Foto imaginaria"
+                      ],
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "error": {
+                  "type": "string",
+                  "example": "El campo urls debe ser un arreglo de hileras de caracteres, con un mínimo de 1 y un máximo de 3, y el formato de las hileras debe ser una url."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Ocurrió un error al eliminar las imágenes. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: el servidor no responde"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/exchanges/": {
+      "post": {
+        "tags": [
+          "Exchanges"
+        ],
+        "description": "Send an email with a proposal to exchange the items selected by one user for a specific item of another user",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Exchange items proposal information",
+            "schema": {
+              "$ref": "#/definitions/ExchangeItems"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. Successfully sent the email for exchange proposal"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Datos no válidos"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "body": {
+                  "type": "object",
+                  "properties": {
+                    "userToId": {
+                      "type": "number",
+                      "example": 1
+                    },
+                    "proposedItemsNames": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "receiveItemName": {
+                      "type": "string",
+                      "example": "Computadora personal"
+                    }
+                  }
+                },
+                "error": {
+                  "type": "string",
+                  "example": "Los items propuestos son obligatorios."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Ocurrió un error al intentar enviar el correo de propuesta de intercambio. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: el servidor no responde"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/items/": {
+      "get": {
+        "tags": [
+          "Items"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Items"
+        ],
+        "description": "Create a new item with required information",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "The new item information",
+            "schema": {
+              "$ref": "#/definitions/CreateItem"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successfully created a new item",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "¡Nuevo item creado exitosamente!"
+                },
+                "item": {
+                  "type": "object",
+                  "properties": {
+                    "itemId": {
+                      "type": "number",
+                      "example": 7
+                    },
+                    "ownerFullName": {
+                      "type": "string",
+                      "example": "David Xie Li"
+                    },
+                    "ownerUserId": {
+                      "type": "number",
+                      "example": 1
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "Cartucho de tinta HP 63"
+                    },
+                    "location": {
+                      "type": "number",
+                      "example": 1
+                    },
+                    "acquisitionDate": {
+                      "type": "string",
+                      "example": "2021-12-30"
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "Tengo este cartucho de tinta negra HP 63 que no uso porque cambié de impresora"
+                    },
+                    "wishlist": {
+                      "type": "string",
+                      "example": "Cartucho de tinta negra o de algún color HP 65"
+                    },
+                    "itemState": {
+                      "type": "number",
+                      "example": 1
+                    },
+                    "category": {
+                      "type": "number",
+                      "example": 2
+                    },
+                    "photoUrls": {
+                      "type": "array",
+                      "example": [
+                        "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename.jpg"
+                      ],
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized. User is not authenticated",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Credenciales inválidas"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "body": {
+                  "type": "object",
+                  "properties": {
+                    "location": {
+                      "type": "number",
+                      "example": 1
+                    },
+                    "acquisitionDate": {
+                      "type": "string",
+                      "example": "2021-12-30"
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "Tengo este cartucho de tinta negra HP 63 que no uso porque cambié de impresora"
+                    },
+                    "wishlist": {
+                      "type": "string",
+                      "example": "Cartucho de tinta negra o de algún color HP 65"
+                    },
+                    "itemState": {
+                      "type": "number",
+                      "example": 1
+                    },
+                    "category": {
+                      "type": "number",
+                      "example": 2
+                    },
+                    "photoUrls": {
+                      "type": "array",
+                      "example": [
+                        "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename.jpg"
+                      ],
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "error": {
+                  "type": "string",
+                  "example": "El nombre del item es un campo obligatorio y debe ser una hilera de caracteres."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Ocurrió un error al crear el artículo. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: el servidor no responde"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/items/{id}": {
+      "get": {
+        "tags": [
+          "Items"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Items"
+        ],
+        "description": "Edit the information of an existing item only if you own it",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The id of the article for which the information is to be edited"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "The information of the item to be edited",
+            "schema": {
+              "$ref": "#/definitions/EditItem"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully edited the specified item",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Item editado exitosamente."
+                },
+                "item": {
+                  "type": "object",
+                  "properties": {
+                    "ownerUserId": {
+                      "type": "number",
+                      "example": 1
+                    },
+                    "ownerFullName": {
+                      "type": "string",
+                      "example": "David Xie Li"
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "Cartucho de tinta HP 63"
+                    },
+                    "location": {
+                      "type": "number",
+                      "example": 1
+                    },
+                    "acquisitionDate": {
+                      "type": "string",
+                      "example": "2021-12-30"
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "Este cartucho de tinta negra HP 63 es único en el mundo. No busques más e intercambiemos"
+                    },
+                    "wishlist": {
+                      "type": "string",
+                      "example": "Cartucho de tinta negra o de algún color HP 65"
+                    },
+                    "itemState": {
+                      "type": "number",
+                      "example": 1
+                    },
+                    "category": {
+                      "type": "number",
+                      "example": 2
+                    },
+                    "photoUrls": {
+                      "type": "array",
+                      "example": [
+                        "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename.jpg",
+                        "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename2.jpg"
+                      ],
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "No está autorizado para editar el item."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "404": {
+            "description": "The item to be edited does not exist",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "El item que se quiere editar no se encuentra"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "body": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "Cartucho de tinta HP 63"
+                    },
+                    "acquisitionDate": {
+                      "type": "string",
+                      "example": "2021-12-30"
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "Este cartucho de tinta negra HP 63 es único en el mundo. No busques más e intercambiemos"
+                    },
+                    "wishlist": {
+                      "type": "string",
+                      "example": "Cartucho de tinta negra o de algún color HP 65"
+                    },
+                    "itemState": {
+                      "type": "number",
+                      "example": 1
+                    },
+                    "category": {
+                      "type": "number",
+                      "example": 2
+                    },
+                    "photoUrls": {
+                      "type": "array",
+                      "example": [
+                        "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename.jpg",
+                        "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename2.jpg"
+                      ],
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "error": {
+                  "type": "string",
+                  "example": "Debe especificar la provincia en la que se encuentra con un número: San José[1], Alajuela[2], Cartago[3], Heredia[4], Guanacaste[5], Puntarenas[6], Limón[7]."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Ocurrió un error al editar el artículo. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: el servidor no responde"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Items"
+        ],
+        "description": "Delete an existing item if it exists and if you own the item",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The id of the item to be deleted"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. Successfully deleted the specified item"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "No está autorizado para eliminar el item."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "404": {
+            "description": "The item to be edited does not exist",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "El item que se quiere eliminar no se encuentra"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Ocurrió un error al eliminar el artículo. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: el servidor no responde"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/items/{categoryId}/items": {
+      "get": {
+        "tags": [
+          "Items"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "categoryId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "LoginUser": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "john@correo.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "password123"
+        }
+      }
+    },
+    "DeleteUrls": {
+      "type": "object",
+      "properties": {
+        "urls": {
+          "type": "array",
+          "example": [
+            "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename.png",
+            "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename2.png"
+          ],
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ExchangeItems": {
+      "type": "object",
+      "properties": {
+        "userToId": {
+          "type": "number",
+          "example": 1
+        },
+        "proposedItemsNames": {
+          "type": "string",
+          "example": "Bicicletas"
+        },
+        "receiveItemName": {
+          "type": "string",
+          "example": "Computadora"
+        }
+      }
+    },
+    "UploadFiles": {
+      "type": "object",
+      "properties": {
+        "files": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "file": {
+                "type": "string",
+                "example": "formData"
+              }
+            }
+          }
+        }
+      }
+    },
+    "CreateItem": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Cartucho de tinta HP 63"
+        },
+        "location": {
+          "type": "number",
+          "example": 1
+        },
+        "acquisitionDate": {
+          "type": "string",
+          "example": "2021-12-30"
+        },
+        "description": {
+          "type": "string",
+          "example": "Tengo este cartucho de tinta negra HP 63 que no uso porque cambié de impresora"
+        },
+        "wishlist": {
+          "type": "string",
+          "example": "Cartucho de tinta negra o de algún color HP 65"
+        },
+        "itemState": {
+          "type": "number",
+          "example": 1
+        },
+        "category": {
+          "type": "number",
+          "example": 2
+        },
+        "photoUrls": {
+          "type": "array",
+          "example": [
+            "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename.jpg"
+          ],
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "EditItem": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Cartucho de tinta HP 63"
+        },
+        "location": {
+          "type": "number",
+          "example": 1
+        },
+        "acquisitionDate": {
+          "type": "string",
+          "example": "2021-12-30"
+        },
+        "description": {
+          "type": "string",
+          "example": "Este cartucho de tinta negra HP 63 es único en el mundo. No busques más e intercambiemos"
+        },
+        "wishlist": {
+          "type": "string",
+          "example": "Cartucho de tinta negra o de algún color HP 65"
+        },
+        "itemState": {
+          "type": "number",
+          "example": 1
+        },
+        "category": {
+          "type": "number",
+          "example": 2
+        },
+        "photoUrls": {
+          "type": "array",
+          "example": [
+            "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename.jpg",
+            "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename2.jpg"
+          ],
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

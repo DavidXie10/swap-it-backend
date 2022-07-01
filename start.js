@@ -14,21 +14,6 @@ const doc = {
     host: 'localhost:8000',
     schemes: ['http', 'https'],
     definitions: {
-        LoginUser: {
-            email: "john@correo.com",
-            password: "password123",      
-        },
-        DeleteUrls: {
-            "urls": [
-                "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename.png",
-                "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename2.png"
-            ]
-        },
-        ExchangeItems: {
-            "userToId": 1,
-            "proposedItemsNames": "Bicicletas",
-            "receiveItemName": "Computadora"            
-        },
         // TODO: check if this is correct
         UploadFiles: {
             files: [
