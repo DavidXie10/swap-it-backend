@@ -6,7 +6,7 @@ const findUserByEmail = (email) => {
 }
 
 const findUserById = (id) => {
-    return users.find(user => user.id === id);
+    return users.find(user => user.id == id);
 }
 
 const findItemById = (id) => {
