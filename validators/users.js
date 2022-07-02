@@ -11,5 +11,5 @@ exports.updateUserSchema = Joi.object({
     email: Joi.string().email().required().error(() => new Error('El email es un campo obligatorio y debe tener el formato de un correo electrónico.')),
     phoneNumber: Joi.string().required().error(() => new Error('El número de teléfono es un campo obligatorio.')),
     location: Joi.number().integer().required().error(() => new Error('La ubicación es un campo obligatorio y debe ser un número entero.')),
-    photoUrl: Joi.string().uri().error(() => new Error('La url de la foto debe tener el formato de un url.'))
+    photoUrl: Joi.string().uri().required().error(() => new Error('La url de la foto es un campo obligatorio y debe tener el formato de un url.'))
 });
