@@ -125,25 +125,19 @@ exports.getItem = (req, res) => {
 exports.getItemsByCategory = (req, res) => {
     // #swagger.tags = ['Items']
     try {
-        const {page} = req.query;
+        const {page, keyword} = req.query;
         const category = req.params.categoryId;
 
-        const itemsByCategory = findItemsByCategory(category);
-        if(!itemsByCategory.length){
-            res.status(404).json({message: 'No se encuentran artículos en la categoría indicada.'});
-            return;
-        }
-
+        const itemsByCategory = findItemsByCategory(category, keyword);
+        const pagesCount = Math.ceil(itemsByCategory.length / pageSize);
         if(!page){
-            res.json(itemsByCategory);
-        } else {
-            const pagesCount = Math.ceil(itemsByCategory.length / pageSize);
-            if(page >= pagesCount || page < 0){
-                res.status(404).json({message: 'No se encuentran los artículos de la página solicitada. Intente con un número de página mayor o igual a 0 y menor a ' + pagesCount });
+            res.json({pagesCount: pagesCount, items: itemsByCategory});
+        } else { 
+            if(page >= pagesCount && pagesCount){
+                res.status(404).json({message: 'No se encuentran los artículos de la página solicitada. Intente con un número de página menor a ' + pagesCount });
                 return;
             }
-
-            res.json(itemsByCategory.slice(page * pageSize, (page * pageSize) + pageSize));
+            res.json({pagesCount: pagesCount, items: itemsByCategory.slice(page * pageSize, (page * pageSize) + pageSize)});
         }        
     } catch (error) {
         res.status(500).json({message: 'Ocurrió un error al cargar los artículos. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: ' + error});

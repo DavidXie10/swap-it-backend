@@ -13,10 +13,10 @@ const findItemById = (id) => {
     return items.find(item => item.itemId == id);
 }
 
-const findItemsByCategory = (category) => {
+const findItemsByCategory = (category, keyword) => {
     let itemsByCategory = [];
     items.map(item => {
-        if(item.category == category || category == 0)
+        if((item.category == category || category == 0) && (!keyword || item.name.toLowerCase().includes(keyword.toLowerCase())))
             itemsByCategory.push(item);
         
     })
