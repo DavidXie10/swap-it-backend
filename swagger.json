@@ -110,7 +110,7 @@
                     }
                   }
                 },
-                "error": {
+                "message": {
                   "type": "string",
                   "example": "El email debe tener el formato de un correo electrónico y es requerido."
                 }
@@ -630,7 +630,7 @@
                     }
                   }
                 },
-                "error": {
+                "message": {
                   "type": "string",
                   "example": "El campo urls debe ser un arreglo de hileras de caracteres, con un mínimo de 1 y un máximo de 3, y el formato de las hileras debe ser una url."
                 }
@@ -723,7 +723,7 @@
                     }
                   }
                 },
-                "error": {
+                "message": {
                   "type": "string",
                   "example": "Los items propuestos son obligatorios."
                 }
@@ -918,7 +918,7 @@
                     }
                   }
                 },
-                "error": {
+                "message": {
                   "type": "string",
                   "example": "El nombre del item es un campo obligatorio y debe ser una hilera de caracteres."
                 }
@@ -1143,7 +1143,7 @@
                     }
                   }
                 },
-                "error": {
+                "message": {
                   "type": "string",
                   "example": "Debe especificar la provincia en la que se encuentra con un número: San José[1], Alajuela[2], Cartago[3], Heredia[4], Guanacaste[5], Puntarenas[6], Limón[7]."
                 }
@@ -1270,6 +1270,51 @@
     }
   },
   "definitions": {
+    "LoginUser": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "john@correo.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "password123"
+        }
+      }
+    },
+    "DeleteUrls": {
+      "type": "object",
+      "properties": {
+        "urls": {
+          "type": "array",
+          "example": [
+            "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename.png",
+            "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename2.png"
+          ],
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ExchangeItems": {
+      "type": "object",
+      "properties": {
+        "userToId": {
+          "type": "number",
+          "example": 1
+        },
+        "proposedItemsNames": {
+          "type": "string",
+          "example": "Bicicletas"
+        },
+        "receiveItemName": {
+          "type": "string",
+          "example": "Computadora"
+        }
+      }
+    },
     "UploadFiles": {
       "type": "object",
       "properties": {
