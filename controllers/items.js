@@ -1,16 +1,26 @@
 const jwt = require('jsonwebtoken');
-const { items, findItemById, findItemsByCategory, findUserById} = require("../utils/constants");
+const { getIgnoreTag } = require('swagger-autogen/src/swagger-tags');
+const { items, isItemFromUser, findItemById, findItemsByCategory, findUserById} = require("../utils/constants");
 
-const isItemFromUser = (token, ownerUserId) => {
-    const decodedToken = jwt.verify(token, process.env.JWT_KEY);
-    const userId = decodedToken.id;
-    return ownerUserId !== userId ? false : true;
-}
+const pageSize = 9;
 
 exports.getAllItems = (req, res) => {
+    //router.route('/?page=:pageId').get(getAllItems);
     // #swagger.tags = ['Items']
     try {
-        res.json(items);
+        const {page} = req.query;
+        if(!page){
+            res.status(400).json({message: 'Solicitud incorrecta'});
+            return;
+        }
+
+        const pagesCount = Math.ceil(items.length / pageSize);
+        if(page >= pagesCount){
+            res.status(404).json({message: 'No se encuentran los artículos de la página solicitada. Intente con un número de página menor a ' + pagesCount });
+            return;
+        }
+
+        res.json(items.slice(page * pageSize, (page * pageSize) + pageSize).map(item => item));
     } catch (error) {
         res.status(500).json({message: 'Ocurrió un error al cargar el catálogo. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: ' + error});
     }
@@ -55,7 +65,7 @@ exports.createItem = (req, res) => {
     #swagger.responses[422] = {
         description: 'Unprocessable Entity',
         schema: {
-            "body": {
+            "0body": {
                 "location": 1,
                 "acquisitionDate": "2021-12-30",
                 "description": "Tengo este cartucho de tinta negra HP 63 que no uso porque cambié de impresora",
@@ -115,13 +125,26 @@ exports.getItem = (req, res) => {
 exports.getItemsByCategory = (req, res) => {
     // #swagger.tags = ['Items']
     try {
+        const {page} = req.query;
         const category = req.params.categoryId;
-        if(category == 0)
-            res.json(items);
-        else {
-            const itemsByCategory = findItemsByCategory(category);
-            res.json(itemsByCategory);
+
+        const itemsByCategory = findItemsByCategory(category);
+        if(!itemsByCategory.length){
+            res.status(404).json({message: 'No se encuentran artículos en la categoría indicada.'});
+            return;
         }
+
+        if(!page){
+            res.json(itemsByCategory);
+        } else {
+            const pagesCount = Math.ceil(itemsByCategory.length / pageSize);
+            if(page >= pagesCount || page < 0){
+                res.status(404).json({message: 'No se encuentran los artículos de la página solicitada. Intente con un número de página mayor o igual a 0 y menor a ' + pagesCount });
+                return;
+            }
+
+            res.json(itemsByCategory.slice(page * pageSize, (page * pageSize) + pageSize));
+        }        
     } catch (error) {
         res.status(500).json({message: 'Ocurrió un error al cargar los artículos. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: ' + error});
     }

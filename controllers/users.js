@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const { findUserByEmail, findUserById, findItemsByUser } = require('../utils/constants');
+const { isItemFromUser, findUserByEmail, findUserById, findItemsByUser } = require('../utils/constants');
 
 exports.loginUser = async (req, res) => {
     // #swagger.tags = ['Users']
@@ -201,16 +201,13 @@ exports.getItemsByUser = (req, res) => {
     */
 
     try {
-        // SHOULD CHECK HERE? IF YES, THE RESPONSE CHANGES (401). MAYBE A MIDDLEWARE?
-        // token = req.headers.authorization.split(' ')[1];
-        // const decodedToken = jwt.verify(token, process.env.JWT_KEY);
-        // if(decodedToken.id != req.params.userId){
-        //     res.status(401).send('No tiene los permisos para acceder a los artículos solicitados');
-        //     return;
-        // }
+        if(isItemFromUser(req.headers.authorization.split(' ')[1], req.params.userId)){
+            res.status(401).send('No tiene los permisos para acceder a los artículos solicitados');
+            return;
+        }
         const items = findItemsByUser(req.params.userId);
-        if(!items){
-            res.status(404).send('No se encuentra el usuario');
+        if(!items.length){
+            res.status(404).send('No se encuentran los artículos o el usuario solicitado');
             return;
         }
         res.json(items);

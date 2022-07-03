@@ -16,8 +16,9 @@ const findItemById = (id) => {
 const findItemsByCategory = (category) => {
     let itemsByCategory = [];
     items.map(item => {
-        if(item.category == category)
+        if(item.category == category || category == 0)
             itemsByCategory.push(item);
+        
     })
     return itemsByCategory;
 }
@@ -31,4 +32,11 @@ const findItemsByUser = (userId) => {
     return itemsByUser;
 }
 
-module.exports = {users, items, findUserByEmail, findUserById, findItemById, findItemsByCategory, findItemsByUser}
+const isItemFromUser = (token, ownerUserId) => {
+    const decodedToken = jwt.verify(token, process.env.JWT_KEY);
+    const userId = decodedToken.id;
+    return ownerUserId !== userId ? false : true;
+}
+
+
+module.exports = {users, items, isItemFromUser, findUserByEmail, findUserById, findItemById, findItemsByCategory, findItemsByUser}
