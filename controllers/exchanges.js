@@ -12,19 +12,13 @@ exports.exchangeItems = async (req, res) => {
         schema: { $ref: '#/definitions/ExchangeItems' }
     } */
     /* 
+    #swagger.responses[204] = {
+        description: 'No Content. Successfully sent the email for exchange proposal',
+    } 
     #swagger.responses[401] = {
         description: 'Unauthorized',
         schema: {
             message: 'Datos no válidos'
-        }
-    } 
-    #swagger.responses[204] = {
-        description: 'No Content. Successfully sent the email for exchange proposal',
-    } 
-    #swagger.responses[500] = {
-        description: 'Internal Server Error',
-        schema: {
-            message: 'Ocurrió un error al intentar enviar el correo de propuesta de intercambio. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: el servidor no responde'
         }
     } 
     #swagger.responses[422] = {
@@ -35,10 +29,15 @@ exports.exchangeItems = async (req, res) => {
                 "proposedItemsNames": "",
                 "receiveItemName": "Computadora personal"
             },
-            "error": "Los items propuestos son obligatorios."
+            "message": "Los items propuestos son obligatorios."
         }
     }
-
+    #swagger.responses[500] = {
+        description: 'Internal Server Error',
+        schema: {
+            message: 'Ocurrió un error al intentar enviar el correo de propuesta de intercambio. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: el servidor no responde'
+        }
+    } 
     */
     try {
         const userPayload = req.body;

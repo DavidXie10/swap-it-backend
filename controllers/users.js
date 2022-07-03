@@ -30,12 +30,6 @@ exports.loginUser = async (req, res) => {
             message: 'Credenciales inválidas'
         }
     } 
-    #swagger.responses[500] = {
-        description: 'Internal Server Error',
-        schema: {
-            message: 'Ocurrió un error al realizar inicio de sesión. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: el servidor no responde'
-        }
-    } 
     #swagger.responses[422] = {
         description: 'Unprocessable Entity',
         schema: {
@@ -43,7 +37,13 @@ exports.loginUser = async (req, res) => {
                 "email": "John Doe",
                 "password": "prueba1234"
             },
-            "error": "El email debe tener el formato de un correo electrónico y es requerido."
+            "message": "El email debe tener el formato de un correo electrónico y es requerido."
+        }
+    } 
+    #swagger.responses[500] = {
+        description: 'Internal Server Error',
+        schema: {
+            message: 'Ocurrió un error al realizar inicio de sesión. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: el servidor no responde'
         }
     } 
     */

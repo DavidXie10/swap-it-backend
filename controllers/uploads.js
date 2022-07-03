@@ -88,12 +88,6 @@ exports.deleteUrls = (req, res) => {
             message: "¡Archivos eliminados exitosamente!",
         }
     } 
-    #swagger.responses[500] = {
-        description: 'Internal Server Error',
-        schema: {
-            message: 'Ocurrió un error al eliminar las imágenes. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: el servidor no responde'
-        }
-    } 
     #swagger.responses[401] = {
         description: 'Unauthorized. User is not authenticated',
         schema: {
@@ -109,7 +103,13 @@ exports.deleteUrls = (req, res) => {
                     "Foto imaginaria"
                 ]
             },
-            error: "El campo urls debe ser un arreglo de hileras de caracteres, con un mínimo de 1 y un máximo de 3, y el formato de las hileras debe ser una url."
+            message: "El campo urls debe ser un arreglo de hileras de caracteres, con un mínimo de 1 y un máximo de 3, y el formato de las hileras debe ser una url."
+        }
+    } 
+    #swagger.responses[500] = {
+        description: 'Internal Server Error',
+        schema: {
+            message: 'Ocurrió un error al eliminar las imágenes. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: el servidor no responde'
         }
     } 
     */

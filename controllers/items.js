@@ -66,7 +66,7 @@ exports.createItem = (req, res) => {
                     "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename.jpg"
                 ]
             },
-            "error": "El nombre del item es un campo obligatorio y debe ser una hilera de caracteres."
+            "message": "El nombre del item es un campo obligatorio y debe ser una hilera de caracteres."
         }
     }
     #swagger.responses[500] = {
@@ -187,7 +187,7 @@ exports.editItem = (req, res) => {
                     "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename2.jpg"
                 ]
             },
-            "error": "Debe especificar la provincia en la que se encuentra con un número: San José[1], Alajuela[2], Cartago[3], Heredia[4], Guanacaste[5], Puntarenas[6], Limón[7]."
+            "message": "Debe especificar la provincia en la que se encuentra con un número: San José[1], Alajuela[2], Cartago[3], Heredia[4], Guanacaste[5], Puntarenas[6], Limón[7]."
         }
     }
     #swagger.responses[500] = {
