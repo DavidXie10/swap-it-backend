@@ -5,7 +5,7 @@ exports.validateSchema = (validSchema) => {
         if(validationResult.error){
             res.status(422).json({
                 body: userPayload,
-                error: validationResult.error.message,
+                message: validationResult.error.message,
             });
         }else{
             next();

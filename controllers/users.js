@@ -132,14 +132,18 @@ exports.updateUser = (req, res) => {
         const userPayload = req.body;
         const user = findUserById(req.params.id);
         if(!user) {
-            res.status(401).send('Credenciales inválidas');
+            res.status(401).json({
+                message: 'Credenciales inválidas.',
+            });
             return;   
         }
         if(updateUserData(user, userPayload)){
             res.status(200).json(userPayload);
         }
     } catch(error) {
-        res.status(500).send('Ocurrió un error al actualizar la información del usuario. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: ' + error);
+        res.status(500).json({
+            message: 'Ocurrió un error al actualizar la información del usuario. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: ' + error
+        });
     }
 }
 
