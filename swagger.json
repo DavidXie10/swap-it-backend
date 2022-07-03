@@ -1270,6 +1270,51 @@
     }
   },
   "definitions": {
+    "LoginUser": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "john@correo.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "password123"
+        }
+      }
+    },
+    "DeleteUrls": {
+      "type": "object",
+      "properties": {
+        "urls": {
+          "type": "array",
+          "example": [
+            "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename.png",
+            "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename2.png"
+          ],
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ExchangeItems": {
+      "type": "object",
+      "properties": {
+        "userToId": {
+          "type": "number",
+          "example": 1
+        },
+        "proposedItemsNames": {
+          "type": "string",
+          "example": "Bicicletas"
+        },
+        "receiveItemName": {
+          "type": "string",
+          "example": "Computadora"
+        }
+      }
+    },
     "UploadFiles": {
       "type": "object",
       "properties": {
