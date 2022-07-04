@@ -109,7 +109,7 @@ exports.updateUser = (req, res) => {
                 email: "john@correo.com",
                 location: 1,
                 phoneNumber: "86808521",
-                photoUrl: "http://t1.gstatic.com/licensed-image?q=tbn:ANd9GcTzXP8yS66xjGHKpFXxFA5oSAh0AjA8xPRcU7I88COgApoIfvdk0kenagYFoJhN6u-I",
+                photoUrl: "https://ci0137.s3.amazonaws.com/swap-it/uploads/anonymous_profile_photo.png",
             }
         }
     } 
@@ -190,6 +190,12 @@ exports.getItemsByUser = (req, res) => {
         description: 'Unauthorized. User is not authenticated',
         schema: {
             message: 'Credenciales inválidas',
+        }
+    } 
+    #swagger.responses[404] = {
+        description: 'User or Items Not Found',
+        schema: {
+            message: 'No se encuentran los artículos o el usuario solicitado',
         }
     } 
     #swagger.responses[500] = {

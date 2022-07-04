@@ -4,28 +4,6 @@ const { items, isItemFromUser, findItemById, findItemsByCategory, findUserById} 
 
 const pageSize = 9;
 
-exports.getAllItems = (req, res) => {
-    //router.route('/?page=:pageId').get(getAllItems);
-    // #swagger.tags = ['Items']
-    try {
-        const {page} = req.query;
-        if(!page){
-            res.status(400).json({message: 'Solicitud incorrecta'});
-            return;
-        }
-
-        const pagesCount = Math.ceil(items.length / pageSize);
-        if(page >= pagesCount){
-            res.status(404).json({message: 'No se encuentran los artículos de la página solicitada. Intente con un número de página menor a ' + pagesCount });
-            return;
-        }
-
-        res.json(items.slice(page * pageSize, (page * pageSize) + pageSize).map(item => item));
-    } catch (error) {
-        res.status(500).json({message: 'Ocurrió un error al cargar el catálogo. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: ' + error});
-    }
-}
-
 exports.createItem = (req, res) => {
     // #swagger.tags = ['Items']
     /* 
@@ -110,6 +88,59 @@ exports.createItem = (req, res) => {
 
 exports.getItem = (req, res) => {
     // #swagger.tags = ['Items']
+    /* 
+    #swagger.description = 'Get item by id'
+    #swagger.parameters['id'] = { description: 'The id of the item it is requesting' }
+    /* 
+    #swagger.responses[200] = {
+        description: 'Successfully item response',
+        schema: {
+            "body": {
+                    "itemId": 7,
+                    "ownerFullName": "David Xie Li",
+                    "ownerUserId": 1,
+                    "name": "Cartucho de tinta HP 63",
+                    "location": 1,
+                    "acquisitionDate": "2021-12-30",
+                    "description": "Tengo este cartucho de tinta negra HP 63 que no uso porque cambié de impresora",
+                    "wishlist": "Cartucho de tinta negra o de algún color HP 65",
+                    "itemState": 1,
+                    "category": 2,
+                    "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/filename.jpg"]
+                }
+        }
+    } 
+    #swagger.responses[401] = {
+        description: 'Unauthorized. User is not authenticated',
+        schema: {
+            message: 'Credenciales inválidas'
+        }
+    } 
+    #swagger.responses[422] = {
+        description: 'Unprocessable Entity',
+        schema: {
+            "0body": {
+                "location": 1,
+                "acquisitionDate": "2021-12-30",
+                "description": "Tengo este cartucho de tinta negra HP 63 que no uso porque cambié de impresora",
+                "wishlist": "Cartucho de tinta negra o de algún color HP 65",
+                "itemState": 1,
+                "category": 2,
+                "photoUrls": [
+                    "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename.jpg"
+                ]
+            },
+            "message": "El nombre del item es un campo obligatorio y debe ser una hilera de caracteres."
+        }
+    }
+    #swagger.responses[500] = {
+        description: 'Internal Server Error',
+        schema: {
+            message: 'Ocurrió un error al crear el artículo. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: el servidor no responde'
+        }
+    } 
+
+    */
     try {
         const item = findItemById(req.params.id);
         if(!item){
