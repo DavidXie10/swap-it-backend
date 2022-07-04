@@ -15,7 +15,7 @@
         "email": "juanipacas@gmail.com",
         "location": 1,
         "phoneNumber": "84861572",
-        "photoUrl": "https://ci0137.s3.amazonaws.com/swap-it/uploads/anonymous_profile_photo.png"
+        "photoUrl": "https://ci0137.s3.amazonaws.com/magma/postres/tres_leches.png"
     },
     {
         "id": 3,
@@ -28,7 +28,7 @@
     },
     {
         "id": 4,
-        "password": "test",
+        "password": "$2b$10$bnoubOn6tH/bPKzmvKyNzuxIZ5B6fHNrXdtAKcVd8O9ctCzvLkqpi",
     	"fullName": "testing fullname",
         "email": "test@test.com",
         "location": 2,
