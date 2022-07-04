@@ -23,15 +23,15 @@
     	"fullName": "Sol Valle Vega",
         "email": "vallesol07@gmail.com",
         "location": 1,
-        "phoneNumber": "1",
+        "phoneNumber": "64174950",
         "photoUrl": "https://ci0137.s3.amazonaws.com/swap-it/uploads/sol_profile_photo.jpg"
     },
     {
         "id": 4,
         "password": "test",
-    	"fullName": "testing fullname",
-        "email": "test@test.com",
-        "location": 2,
+    	"fullName": "Daniel Calvo Marín",
+        "email": "daniel.calvomarin@ucr.ac.cr",
+        "location": 12,
         "phoneNumber": "11425871",
         "photoUrl": "https://ci0137.s3.amazonaws.com/swap-it/uploads/anonymous_profile_photo.png"
     }
