@@ -1,5 +1,6 @@
 const users = require('../data/users.json');
 const items = require('../data/items.json');
+const jwt = require('jsonwebtoken');
 
 const findUserByEmail = (email) => {
     return users.find(user => user.email === email);
@@ -37,6 +38,5 @@ const isItemFromUser = (token, ownerUserId) => {
     const userId = decodedToken.id;
     return ownerUserId !== userId ? false : true;
 }
-
 
 module.exports = {users, items, isItemFromUser, findUserByEmail, findUserById, findItemById, findItemsByCategory, findItemsByUser}

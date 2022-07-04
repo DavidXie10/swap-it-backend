@@ -1,6 +1,7 @@
-const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const { isItemFromUser, findUserByEmail, findUserById, findItemsByUser } = require('../utils/constants');
+
 
 exports.loginUser = async (req, res) => {
     // #swagger.tags = ['Users']
