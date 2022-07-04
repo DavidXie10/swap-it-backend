@@ -1,6 +1,7 @@
-const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const { isItemFromUser, findUserByEmail, findUserById, findItemsByUser } = require('../utils/constants');
+
 
 exports.loginUser = async (req, res) => {
     // #swagger.tags = ['Users']
@@ -212,7 +213,7 @@ exports.getItemsByUser = (req, res) => {
             return;
         }
         const items = findItemsByUser(req.params.userId);
-        if(!items.length){
+        if(items.length === 0){
             res.status(404).send('No se encuentran los artículos o el usuario solicitado');
             return;
         }
