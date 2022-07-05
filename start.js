@@ -3,7 +3,7 @@ const swaggerAutogen = require('swagger-autogen')();
 const doc = {
     info: {
         title: 'Swap It - API',
-        description: 'Este es el API del proyecto del curso de Desarrollo de Aplicaciones Web (CI-0137) de la aplicación Swap It',
+        description: 'Este es el API del proyecto del curso de Desarrollo de Aplicaciones Web (CI-0137) de la aplicación Swap It.',
         version: "1.0.0",
         contact: {
             name: "Swap it team", 
@@ -11,7 +11,7 @@ const doc = {
             url: "https://github.com/DavidXie10/swap-it-ui", // TODO: change to netlify url
         },      
     },
-    host: 'localhost:8000',
+    host: 'https://swap-it-api.herokuapp.com/',
     schemes: ['http', 'https'],
     definitions: {
         LoginUser: {
