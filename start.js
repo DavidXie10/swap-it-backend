@@ -11,7 +11,7 @@ const doc = {
             url: "https://github.com/DavidXie10/swap-it-ui", // TODO: change to netlify url
         },      
     },
-    host: 'https://swap-it-api.herokuapp.com/',
+    host: 'https://swap-it-api.herokuapp.com',
     schemes: ['http', 'https'],
     definitions: {
         LoginUser: {

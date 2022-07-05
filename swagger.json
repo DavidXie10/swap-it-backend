@@ -10,7 +10,7 @@
       "url": "https://github.com/DavidXie10/swap-it-ui"
     }
   },
-  "host": "https://swap-it-api.herokuapp.com/",
+  "host": "https://swap-it-api.herokuapp.com",
   "basePath": "/",
   "schemes": [
     "http",
