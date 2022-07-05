@@ -213,10 +213,6 @@ exports.getItemsByUser = (req, res) => {
             return;
         }
         const items = findItemsByUser(req.params.userId);
-        if(items.length === 0){
-            res.status(404).send('No se encuentran los artículos o el usuario solicitado');
-            return;
-        }
         res.json(items);
     } catch (error) {
         res.status(500).json({message: 'Ocurrió un error al cargar los artículos del usuario. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: ' + error});
