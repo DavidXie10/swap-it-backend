@@ -4,8 +4,7 @@
   "description": "Backend de la aplicación \"Swap It\" para el proyecto del curso de Desarrollo de Aplicaciones Web (CI-0137)",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
