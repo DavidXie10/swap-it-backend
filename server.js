@@ -20,9 +20,6 @@ server.use('/uploads', uploadRoutes);
 server.use('/exchanges', exchangesRoutes);
 server.use('/items', itemsRoutes);
 server.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerFile));
-server.use('/', (req, res) => {
-    res.send(`<h1>Welcome to the Swap It API</h1><p>To check the swagger documentation please follow the link that follows: <a href='https://swap-it-api.herokuapp.com/docs'>https://swap-it-api.herokuapp.com/docs</a></p>`)
-})
 
 server.listen(process.env.PORT || 8000);
 
