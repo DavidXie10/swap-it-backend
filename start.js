@@ -18,6 +18,13 @@ const doc = {
             email: "john@correo.com",
             password: "password123",      
         },
+        UpdateUser:{
+            fullName: "John Doe",
+            email: "john@correo.com",
+            location: 1,
+            phoneNumber: "86808521",
+            photoUrl: "https://ci0137.s3.amazonaws.com/swap-it/uploads/anonymous_profile_photo.png"
+        },
         DeleteUrls: {
             "urls": [
                 "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename.png",
