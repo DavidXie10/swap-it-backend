@@ -11,7 +11,7 @@
     {
         "id": 2,
         "password": "$2b$10$bnoubOn6tH/bPKzmvKyNzuxIZ5B6fHNrXdtAKcVd8O9ctCzvLkqpi",
-    	"fullName": "Juan Ignacio Pacheco Castro",
+    	"fullName": "Juan Ignacio Pacheco",
         "email": "juanipacas@gmail.com",
         "location": 1,
         "phoneNumber": "84861572",
@@ -23,13 +23,13 @@
     	"fullName": "Sol Valle Vega",
         "email": "vallesol07@gmail.com",
         "location": 1,
-        "phoneNumber": "64174950",
+        "phoneNumber": "88776655",
         "photoUrl": "https://ci0137.s3.amazonaws.com/swap-it/uploads/sol_profile_photo.jpg"
     },
     {
         "id": 4,
         "password": "$2b$10$bnoubOn6tH/bPKzmvKyNzuxIZ5B6fHNrXdtAKcVd8O9ctCzvLkqpi",
-    	"fullName": "Daniel Calvo Marín",
+    	"fullName": "Daniel Calvo",
         "email": "daniel.calvomarin@ucr.ac.cr",
         "location": 1,
         "phoneNumber": "88888888",
