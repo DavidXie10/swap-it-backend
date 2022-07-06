@@ -254,7 +254,7 @@
                     },
                     "photoUrl": {
                       "type": "string",
-                      "example": "http://t1.gstatic.com/licensed-image?q=tbn:ANd9GcTzXP8yS66xjGHKpFXxFA5oSAh0AjA8xPRcU7I88COgApoIfvdk0kenagYFoJhN6u-I"
+                      "example": "https://ci0137.s3.amazonaws.com/swap-it/uploads/anonymous_profile_photo.png"
                     }
                   }
                 }
@@ -408,6 +408,21 @@
                 "message": {
                   "type": "string",
                   "example": "Credenciales inválidas"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "404": {
+            "description": "User or Items Not Found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "No se encuentran los artículos o el usuario solicitado"
                 }
               },
               "xml": {
@@ -749,33 +764,6 @@
       }
     },
     "/items/": {
-      "get": {
-        "tags": [
-          "Items"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
       "post": {
         "tags": [
           "Items"
@@ -960,24 +948,167 @@
         "tags": [
           "Items"
         ],
-        "description": "",
+        "description": "Get item by id",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "The id of the item it is requesting"
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Successfully item response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "body": {
+                  "type": "object",
+                  "properties": {
+                    "itemId": {
+                      "type": "number",
+                      "example": 7
+                    },
+                    "ownerFullName": {
+                      "type": "string",
+                      "example": "David Xie Li"
+                    },
+                    "ownerUserId": {
+                      "type": "number",
+                      "example": 1
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "Cartucho de tinta HP 63"
+                    },
+                    "location": {
+                      "type": "number",
+                      "example": 1
+                    },
+                    "acquisitionDate": {
+                      "type": "string",
+                      "example": "2021-12-30"
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "Tengo este cartucho de tinta negra HP 63 que no uso porque cambié de impresora"
+                    },
+                    "wishlist": {
+                      "type": "string",
+                      "example": "Cartucho de tinta negra o de algún color HP 65"
+                    },
+                    "itemState": {
+                      "type": "number",
+                      "example": 1
+                    },
+                    "category": {
+                      "type": "number",
+                      "example": 2
+                    },
+                    "photoUrls": {
+                      "type": "array",
+                      "example": [
+                        "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename.jpg"
+                      ],
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. User is not authenticated",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Credenciales inválidas"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           },
           "404": {
             "description": "Not Found"
           },
+          "422": {
+            "description": "Unprocessable Entity",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "0body": {
+                  "type": "object",
+                  "properties": {
+                    "location": {
+                      "type": "number",
+                      "example": 1
+                    },
+                    "acquisitionDate": {
+                      "type": "string",
+                      "example": "2021-12-30"
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "Tengo este cartucho de tinta negra HP 63 que no uso porque cambié de impresora"
+                    },
+                    "wishlist": {
+                      "type": "string",
+                      "example": "Cartucho de tinta negra o de algún color HP 65"
+                    },
+                    "itemState": {
+                      "type": "number",
+                      "example": 1
+                    },
+                    "category": {
+                      "type": "number",
+                      "example": 2
+                    },
+                    "photoUrls": {
+                      "type": "array",
+                      "example": [
+                        "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename.jpg"
+                      ],
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "message": {
+                  "type": "string",
+                  "example": "El nombre del item es un campo obligatorio y debe ser una hilera de caracteres."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Ocurrió un error al crear el artículo. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: el servidor no responde"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           }
         }
       },
