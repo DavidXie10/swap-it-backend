@@ -283,7 +283,44 @@
             }
           },
           "422": {
-            "description": "Unprocessable Entity"
+            "description": "Unprocessable Entity",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "body": {
+                  "type": "object",
+                  "properties": {
+                    "fullName": {
+                      "type": "string",
+                      "example": "John Doe"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "john@correo.com"
+                    },
+                    "location": {
+                      "type": "number",
+                      "example": 1
+                    },
+                    "phoneNumber": {
+                      "type": "string",
+                      "example": "86808521"
+                    },
+                    "photoUrl": {
+                      "type": "string",
+                      "example": "https://ci0137.s3.amazonaws.com/swap-it/uploads/anonymous_profile_photo.png"
+                    }
+                  }
+                },
+                "message": {
+                  "type": "string",
+                  "example": "El nombre es un campo obligatorio y debe ser una hilera de caracteres."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           },
           "500": {
             "description": "Internal Server Error",
@@ -862,7 +899,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "0body": {
+                "body": {
                   "type": "object",
                   "properties": {
                     "location": {

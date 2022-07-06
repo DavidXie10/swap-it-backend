@@ -43,7 +43,7 @@ exports.createItem = (req, res) => {
     #swagger.responses[422] = {
         description: 'Unprocessable Entity',
         schema: {
-            "0body": {
+            "body": {
                 "location": 1,
                 "acquisitionDate": "2021-12-30",
                 "description": "Tengo este cartucho de tinta negra HP 63 que no uso porque cambié de impresora",
@@ -148,7 +148,7 @@ exports.getItemsByCategory = (req, res) => {
     #swagger.parameters['page'] = { in: 'query', description: 'The page where are the requested items', type: 'int' }
     #swagger.parameters['keyword'] = { in: 'query', description: 'The search keyword that must match with the item name', type: 'string' }
     #swagger.parameters['categoryId'] = { in: 'path', description: 'The category id of the requested items', type: 'int' }
-#swagger.responses[200] = {
+    #swagger.responses[200] = {
         description: 'Successfully items response',
         schema: {
             "body": [

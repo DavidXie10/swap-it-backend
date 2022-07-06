@@ -120,6 +120,19 @@ exports.updateUser = (req, res) => {
             message: 'Credenciales inválidas',
         }
     } 
+    #swagger.responses[422] = {
+        description: 'Unprocessable Entity',
+        schema: {
+            "body": {
+                fullName: "John Doe",
+                email: "john@correo.com",
+                location: 1,
+                phoneNumber: "86808521",
+                photoUrl: "https://ci0137.s3.amazonaws.com/swap-it/uploads/anonymous_profile_photo.png",
+            },
+            "message": "El nombre es un campo obligatorio y debe ser una hilera de caracteres."
+        }
+    }
     #swagger.responses[500] = {
         description: 'Internal Server Error',
         schema: {

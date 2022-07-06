@@ -7,7 +7,7 @@ exports.loginSchema = Joi.object({
 });
 
 exports.updateUserSchema = Joi.object({
-    fullName: Joi.string().required().error(() => new Error('El nombre es un campo obligatorio.')),
+    fullName: Joi.string().required().error(() => new Error('El nombre es un campo obligatorio y debe ser una hilera de caracteres.')),
     email: Joi.string().email().required().error(() => new Error('El email es un campo obligatorio y debe tener el formato de un correo electrónico.')),
     phoneNumber: Joi.string().length(8).pattern(/^[0-9]+$/).required().error(() => new Error('El número de teléfono es un campo obligatorio y debe tener el formato de un número de teléfono.')),
     location: Joi.number().integer().required().error(() => new Error('La ubicación es un campo obligatorio y debe ser un número entero.')),
