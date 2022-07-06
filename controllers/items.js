@@ -90,7 +90,7 @@ exports.getItem = (req, res) => {
     // #swagger.tags = ['Items']
     /* 
     #swagger.description = 'Get item by id'
-    #swagger.parameters['id'] = { description: 'The id of the item it is requesting' }
+    #swagger.parameters['id'] = { description: 'The id of the requested item' }
     /* 
     #swagger.responses[200] = {
         description: 'Successfully item response',
@@ -116,30 +116,18 @@ exports.getItem = (req, res) => {
             message: 'Credenciales inválidas'
         }
     } 
-    #swagger.responses[422] = {
-        description: 'Unprocessable Entity',
+    #swagger.responses[404] = {
+        description: 'Item not found',
         schema: {
-            "0body": {
-                "location": 1,
-                "acquisitionDate": "2021-12-30",
-                "description": "Tengo este cartucho de tinta negra HP 63 que no uso porque cambié de impresora",
-                "wishlist": "Cartucho de tinta negra o de algún color HP 65",
-                "itemState": 1,
-                "category": 2,
-                "photoUrls": [
-                    "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename.jpg"
-                ]
-            },
-            "message": "El nombre del item es un campo obligatorio y debe ser una hilera de caracteres."
+            message: 'Item no encontrado'
         }
-    }
+    } 
     #swagger.responses[500] = {
         description: 'Internal Server Error',
         schema: {
             message: 'Ocurrió un error al crear el artículo. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: el servidor no responde'
         }
     } 
-
     */
     try {
         const item = findItemById(req.params.id);
@@ -155,6 +143,57 @@ exports.getItem = (req, res) => {
 
 exports.getItemsByCategory = (req, res) => {
     // #swagger.tags = ['Items']
+    /* 
+    #swagger.description = 'Get items by category, on a specific page, and with an optional search keyword that must match with the item name'
+    #swagger.parameters['page'] = { in: 'query', description: 'The page where are the requested items', type: 'int' }
+    #swagger.parameters['keyword'] = { in: 'query', description: 'The search keyword that must match with the item name', type: 'string' }
+    #swagger.parameters['categoryId'] = { in: 'path', description: 'The category id of the requested items', type: 'int' }
+#swagger.responses[200] = {
+        description: 'Successfully items response',
+        schema: {
+            "body": [
+                {
+                    "itemId": 1,
+                    "ownerFullName": "David Xie Li",
+                    "ownerUserId": 1,
+                    "name": "Iphone 12",
+                    "location": 4,
+                    "acquisitionDate": "2022-01-15",
+                    "description": "Iphone 12 morado, con cargador y audifonos. Batería en un 80%",
+                    "wishlist": "Celular Android, de preferencia marca Samsung o Huawei",
+                    "itemState": 2,
+                    "category": 2,
+                    "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/24751111-3d23-4915-8a13-d1d551c23c3d.jpg","https://ci0137.s3.amazonaws.com/swap-it/uploads/a64ebe3d-de42-4bd4-854b-688e8ef88729.jpg","https://ci0137.s3.amazonaws.com/swap-it/uploads/faac1354-e5ea-4373-9cee-e45582cb8c85.jpg"]
+                },
+                {
+                    "itemId": 2,
+                    "ownerFullName": "Sol Valle Vega",
+                    "ownerUserId": 3,
+                    "name": "Smart TV Xiaomi",
+                    "location": 4,
+                    "acquisitionDate": "2022-05-22",
+                    "description": "Pantalla smart TV de 43 pulgadas con todos sus accesorios (cables, patas, brazo para pegar en la pared)",
+                    "wishlist": "Biclicleta o bicimoto",
+                    "itemState": 1,
+                    "category": 2,
+                    "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/347b5747-afeb-4161-a262-53bf8a039f34.jpg"]
+                }
+            ]
+        }
+    } 
+    #swagger.responses[404] = {
+        description: 'Items page not found',
+        schema: {
+            message: 'No se encuentran los artículos de la página solicitada. Intente con un número de página menor a la cantidad de páginas'
+        }
+    } 
+    #swagger.responses[500] = {
+        description: 'Internal Server Error',
+        schema: {
+            message: 'Ocurrió un error al cargar los artículos. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: el servidor no responde'
+        }
+    } 
+    */
     try {
         const {page, keyword} = req.query;
         const category = req.params.categoryId;

@@ -308,7 +308,7 @@
         "tags": [
           "Users"
         ],
-        "description": "Get user items ",
+        "description": "Get user items",
         "parameters": [
           {
             "name": "userId",
@@ -408,21 +408,6 @@
                 "message": {
                   "type": "string",
                   "example": "Credenciales inválidas"
-                }
-              },
-              "xml": {
-                "name": "main"
-              }
-            }
-          },
-          "404": {
-            "description": "User or Items Not Found",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "message": {
-                  "type": "string",
-                  "example": "No se encuentran los artículos o el usuario solicitado"
                 }
               },
               "xml": {
@@ -955,7 +940,7 @@
             "in": "path",
             "required": true,
             "type": "string",
-            "description": "The id of the item it is requesting"
+            "description": "The id of the requested item"
           }
         ],
         "responses": {
@@ -1040,54 +1025,13 @@
             }
           },
           "404": {
-            "description": "Not Found"
-          },
-          "422": {
-            "description": "Unprocessable Entity",
+            "description": "Item not found",
             "schema": {
               "type": "object",
               "properties": {
-                "0body": {
-                  "type": "object",
-                  "properties": {
-                    "location": {
-                      "type": "number",
-                      "example": 1
-                    },
-                    "acquisitionDate": {
-                      "type": "string",
-                      "example": "2021-12-30"
-                    },
-                    "description": {
-                      "type": "string",
-                      "example": "Tengo este cartucho de tinta negra HP 63 que no uso porque cambié de impresora"
-                    },
-                    "wishlist": {
-                      "type": "string",
-                      "example": "Cartucho de tinta negra o de algún color HP 65"
-                    },
-                    "itemState": {
-                      "type": "number",
-                      "example": 1
-                    },
-                    "category": {
-                      "type": "number",
-                      "example": 2
-                    },
-                    "photoUrls": {
-                      "type": "array",
-                      "example": [
-                        "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename.jpg"
-                      ],
-                      "items": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                },
                 "message": {
                   "type": "string",
-                  "example": "El nombre del item es un campo obligatorio y debe ser una hilera de caracteres."
+                  "example": "Item no encontrado"
                 }
               },
               "xml": {
@@ -1389,34 +1333,126 @@
         "tags": [
           "Items"
         ],
-        "description": "",
+        "description": "Get items by category, on a specific page, and with an optional search keyword that must match with the item name",
         "parameters": [
           {
             "name": "categoryId",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "int",
+            "description": "The category id of the requested items"
           },
           {
             "name": "page",
             "in": "query",
-            "type": "string"
+            "description": "The page where are the requested items",
+            "type": "int"
           },
           {
             "name": "keyword",
             "in": "query",
+            "description": "The search keyword that must match with the item name",
             "type": "string"
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Successfully items response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "body": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "itemId": {
+                        "type": "number",
+                        "example": 2
+                      },
+                      "ownerFullName": {
+                        "type": "string",
+                        "example": "Sol Valle Vega"
+                      },
+                      "ownerUserId": {
+                        "type": "number",
+                        "example": 3
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "Smart TV Xiaomi"
+                      },
+                      "location": {
+                        "type": "number",
+                        "example": 4
+                      },
+                      "acquisitionDate": {
+                        "type": "string",
+                        "example": "2022-05-22"
+                      },
+                      "description": {
+                        "type": "string",
+                        "example": "Pantalla smart TV de 43 pulgadas con todos sus accesorios (cables, patas, brazo para pegar en la pared)"
+                      },
+                      "wishlist": {
+                        "type": "string",
+                        "example": "Biclicleta o bicimoto"
+                      },
+                      "itemState": {
+                        "type": "number",
+                        "example": 1
+                      },
+                      "category": {
+                        "type": "number",
+                        "example": 2
+                      },
+                      "photoUrls": {
+                        "type": "array",
+                        "example": [
+                          "https://ci0137.s3.amazonaws.com/swap-it/uploads/347b5747-afeb-4161-a262-53bf8a039f34.jpg"
+                        ],
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           },
           "404": {
-            "description": "Not Found"
+            "description": "Items page not found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "No se encuentran los artículos de la página solicitada. Intente con un número de página menor a la cantidad de páginas"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Ocurrió un error al cargar los artículos. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: el servidor no responde"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           }
         }
       }
@@ -1433,6 +1469,31 @@
         "password": {
           "type": "string",
           "example": "password123"
+        }
+      }
+    },
+    "UpdateUser": {
+      "type": "object",
+      "properties": {
+        "fullName": {
+          "type": "string",
+          "example": "John Doe"
+        },
+        "email": {
+          "type": "string",
+          "example": "john@correo.com"
+        },
+        "location": {
+          "type": "number",
+          "example": 1
+        },
+        "phoneNumber": {
+          "type": "string",
+          "example": "86808521"
+        },
+        "photoUrl": {
+          "type": "string",
+          "example": "https://ci0137.s3.amazonaws.com/swap-it/uploads/anonymous_profile_photo.png"
         }
       }
     },

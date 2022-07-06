@@ -102,7 +102,7 @@ exports.updateUser = (req, res) => {
         schema: { $ref: '#/definitions/UpdateUser' }
     } 
     */
-    /* #swagger.responses[200] = {
+    /* #swagger.responses[200] = {    
         description: 'User successfully edited',
         schema: {
             "body": {
@@ -151,7 +151,7 @@ exports.updateUser = (req, res) => {
 exports.getItemsByUser = (req, res) => {
     // #swagger.tags = ['Users']
     /*  
-    #swagger.description = 'Get user items '
+    #swagger.description = 'Get user items'
     #swagger.parameters['id'] = { description: 'The id of the user who is requesting their items' }
     */
     /* #swagger.responses[200] = {
@@ -191,12 +191,6 @@ exports.getItemsByUser = (req, res) => {
         description: 'Unauthorized. User is not authenticated',
         schema: {
             message: 'Credenciales inválidas',
-        }
-    } 
-    #swagger.responses[404] = {
-        description: 'User or Items Not Found',
-        schema: {
-            message: 'No se encuentran los artículos o el usuario solicitado',
         }
     } 
     #swagger.responses[500] = {
