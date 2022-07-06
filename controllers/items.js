@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { getIgnoreTag } = require('swagger-autogen/src/swagger-tags');
-const { items, isItemFromUser, findItemById, findItemsByCategory, findUserById} = require("../utils/constants");
+const { isItemFromUser, findItemById, findItemsByCategory, findUserById} = require("../utils/constants");
 
 const pageSize = 9;
 
