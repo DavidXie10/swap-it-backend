@@ -2,12 +2,12 @@
   "swagger": "2.0",
   "info": {
     "title": "Swap It - API",
-    "description": "Este es el API del proyecto del curso de Desarrollo de Aplicaciones Web (CI-0137) de la aplicación Swap It",
+    "description": "This is the API of the Web Application Development course project (CI-0137) of the Swap It application.",
     "version": "1.0.0",
     "contact": {
-      "name": "Swap it team",
+      "name": "Swap it",
       "email": "swapitecci@gmail.com",
-      "url": "https://github.com/DavidXie10/swap-it-ui"
+      "url": "https://swap-it-cr.netlify.com/"
     }
   },
   "host": "localhost:8000",
@@ -470,321 +470,6 @@
         }
       }
     },
-    "/uploads/": {
-      "post": {
-        "tags": [
-          "Uploads"
-        ],
-        "description": "Upload a minimum of 1 image and a maximum of 3 and get the urls, types and sizes of the uploaded images",
-        "consumes": [
-          "multipart/form-data"
-        ],
-        "parameters": [
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "multFiles",
-            "in": "formData",
-            "type": "array",
-            "required": true,
-            "description": "Image files to be uploaded",
-            "collectionFormat": "multi",
-            "items": {
-              "type": "file"
-            },
-            "schema": {
-              "$ref": "#/definitions/UploadFiles"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successfully uploaded the provided images. It returns an array of file attributes",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "message": {
-                  "type": "string",
-                  "example": "¡Archivos cargados exitosamente!"
-                },
-                "uploadedFiles": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "url": {
-                        "type": "string",
-                        "example": "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename.jpg"
-                      },
-                      "type": {
-                        "type": "string",
-                        "example": "image/jpeg"
-                      },
-                      "size": {
-                        "type": "number",
-                        "example": 34445
-                      }
-                    }
-                  }
-                }
-              },
-              "xml": {
-                "name": "main"
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request. An image file is nedded",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "message": {
-                  "type": "string",
-                  "example": "Se necesita subir al menos una imagen en formato .png, .jpg o .jpeg"
-                }
-              },
-              "xml": {
-                "name": "main"
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized. User is not authenticated",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "error": {
-                  "type": "boolean",
-                  "example": true
-                },
-                "message": {
-                  "type": "string",
-                  "example": "El usuario no está autenticado"
-                }
-              },
-              "xml": {
-                "name": "main"
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "message": {
-                  "type": "string",
-                  "example": "Ocurrió un error al subir las imágenes. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: el servidor no responde"
-                }
-              },
-              "xml": {
-                "name": "main"
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Uploads"
-        ],
-        "description": "Delete uploaded images by passing their urls",
-        "parameters": [
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "obj",
-            "in": "body",
-            "description": "The array of urls to be deleted",
-            "schema": {
-              "$ref": "#/definitions/DeleteUrls"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successfully deleted the provided images urls",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "message": {
-                  "type": "string",
-                  "example": "¡Archivos eliminados exitosamente!"
-                }
-              },
-              "xml": {
-                "name": "main"
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized. User is not authenticated",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "error": {
-                  "type": "boolean",
-                  "example": true
-                },
-                "message": {
-                  "type": "string",
-                  "example": "El usuario no está autenticado"
-                }
-              },
-              "xml": {
-                "name": "main"
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "body": {
-                  "type": "object",
-                  "properties": {
-                    "urls": {
-                      "type": "array",
-                      "example": [
-                        "Foto imaginaria"
-                      ],
-                      "items": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                },
-                "message": {
-                  "type": "string",
-                  "example": "El campo urls debe ser un arreglo de hileras de caracteres, con un mínimo de 1 y un máximo de 3, y el formato de las hileras debe ser una url."
-                }
-              },
-              "xml": {
-                "name": "main"
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "message": {
-                  "type": "string",
-                  "example": "Ocurrió un error al eliminar las imágenes. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: el servidor no responde"
-                }
-              },
-              "xml": {
-                "name": "main"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/exchanges/": {
-      "post": {
-        "tags": [
-          "Exchanges"
-        ],
-        "description": "Send an email with a proposal to exchange the items selected by one user for a specific item of another user",
-        "parameters": [
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "obj",
-            "in": "body",
-            "description": "Exchange items proposal information",
-            "schema": {
-              "$ref": "#/definitions/ExchangeItems"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content. Successfully sent the email for exchange proposal"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "message": {
-                  "type": "string",
-                  "example": "Datos no válidos"
-                }
-              },
-              "xml": {
-                "name": "main"
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "body": {
-                  "type": "object",
-                  "properties": {
-                    "userToId": {
-                      "type": "number",
-                      "example": 1
-                    },
-                    "proposedItemsNames": {
-                      "type": "string",
-                      "example": ""
-                    },
-                    "receiveItemName": {
-                      "type": "string",
-                      "example": "Computadora personal"
-                    }
-                  }
-                },
-                "message": {
-                  "type": "string",
-                  "example": "Los items propuestos son obligatorios."
-                }
-              },
-              "xml": {
-                "name": "main"
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "message": {
-                  "type": "string",
-                  "example": "Ocurrió un error al intentar enviar el correo de propuesta de intercambio. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: el servidor no responde"
-                }
-              },
-              "xml": {
-                "name": "main"
-              }
-            }
-          }
-        }
-      }
-    },
     "/items/": {
       "post": {
         "tags": [
@@ -899,7 +584,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "body": {
+                "0body": {
                   "type": "object",
                   "properties": {
                     "location": {
@@ -1493,6 +1178,321 @@
           }
         }
       }
+    },
+    "/exchanges/": {
+      "post": {
+        "tags": [
+          "Exchanges"
+        ],
+        "description": "Send an email with a proposal to exchange the items selected by one user for a specific item of another user",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Exchange items proposal information",
+            "schema": {
+              "$ref": "#/definitions/ExchangeItems"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. Successfully sent the email for exchange proposal"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Datos no válidos"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "body": {
+                  "type": "object",
+                  "properties": {
+                    "userToId": {
+                      "type": "number",
+                      "example": 1
+                    },
+                    "proposedItemsNames": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "receiveItemName": {
+                      "type": "string",
+                      "example": "Computadora personal"
+                    }
+                  }
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Los items propuestos son obligatorios."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Ocurrió un error al intentar enviar el correo de propuesta de intercambio. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: el servidor no responde"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/uploads/": {
+      "post": {
+        "tags": [
+          "Uploads"
+        ],
+        "description": "Upload a minimum of 1 image and a maximum of 3 and get the urls, types and sizes of the uploaded images",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "multFiles",
+            "in": "formData",
+            "type": "array",
+            "required": true,
+            "description": "Image files to be uploaded",
+            "collectionFormat": "multi",
+            "items": {
+              "type": "file"
+            },
+            "schema": {
+              "$ref": "#/definitions/UploadFiles"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully uploaded the provided images. It returns an array of file attributes",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "¡Archivos cargados exitosamente!"
+                },
+                "uploadedFiles": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "url": {
+                        "type": "string",
+                        "example": "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename.jpg"
+                      },
+                      "type": {
+                        "type": "string",
+                        "example": "image/jpeg"
+                      },
+                      "size": {
+                        "type": "number",
+                        "example": 34445
+                      }
+                    }
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. An image file is nedded",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Se necesita subir al menos una imagen en formato .png, .jpg o .jpeg"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. User is not authenticated",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "message": {
+                  "type": "string",
+                  "example": "El usuario no está autenticado"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Ocurrió un error al subir las imágenes. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: el servidor no responde"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Uploads"
+        ],
+        "description": "Delete uploaded images by passing their urls",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "The array of urls to be deleted",
+            "schema": {
+              "$ref": "#/definitions/DeleteUrls"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully deleted the provided images urls",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "¡Archivos eliminados exitosamente!"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized. User is not authenticated",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "message": {
+                  "type": "string",
+                  "example": "El usuario no está autenticado"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "body": {
+                  "type": "object",
+                  "properties": {
+                    "urls": {
+                      "type": "array",
+                      "example": [
+                        "Foto imaginaria"
+                      ],
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "message": {
+                  "type": "string",
+                  "example": "El campo urls debe ser un arreglo de hileras de caracteres, con un mínimo de 1 y un máximo de 3, y el formato de las hileras debe ser una url."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Ocurrió un error al eliminar las imágenes. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: el servidor no responde"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -1531,55 +1531,6 @@
         "photoUrl": {
           "type": "string",
           "example": "https://ci0137.s3.amazonaws.com/swap-it/uploads/anonymous_profile_photo.png"
-        }
-      }
-    },
-    "DeleteUrls": {
-      "type": "object",
-      "properties": {
-        "urls": {
-          "type": "array",
-          "example": [
-            "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename.png",
-            "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename2.png"
-          ],
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "ExchangeItems": {
-      "type": "object",
-      "properties": {
-        "userToId": {
-          "type": "number",
-          "example": 1
-        },
-        "proposedItemsNames": {
-          "type": "string",
-          "example": "Bicicletas"
-        },
-        "receiveItemName": {
-          "type": "string",
-          "example": "Computadora"
-        }
-      }
-    },
-    "UploadFiles": {
-      "type": "object",
-      "properties": {
-        "files": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "file": {
-                "type": "string",
-                "example": "formData"
-              }
-            }
-          }
         }
       }
     },
@@ -1661,6 +1612,55 @@
           "example": [
             "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename.jpg",
             "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename2.jpg"
+          ],
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ExchangeItems": {
+      "type": "object",
+      "properties": {
+        "userToId": {
+          "type": "number",
+          "example": 1
+        },
+        "proposedItemsNames": {
+          "type": "string",
+          "example": "Bicicletas"
+        },
+        "receiveItemName": {
+          "type": "string",
+          "example": "Computadora"
+        }
+      }
+    },
+    "UploadFiles": {
+      "type": "object",
+      "properties": {
+        "files": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "file": {
+                "type": "string",
+                "example": "formData"
+              }
+            }
+          }
+        }
+      }
+    },
+    "DeleteUrls": {
+      "type": "object",
+      "properties": {
+        "urls": {
+          "type": "array",
+          "example": [
+            "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename.png",
+            "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename2.png"
           ],
           "items": {
             "type": "string"
