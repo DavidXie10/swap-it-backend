@@ -6,7 +6,7 @@ const pageSize = 9;
 exports.createItem = (req, res) => {
     // #swagger.tags = ['Items']
     /* 
-    #swagger.description = 'Create a new item with required information'
+    #swagger.description = 'Create a new item with required information.'
     #swagger.parameters['obj'] = {
             in: 'body',
             description: 'The new item information',
@@ -19,9 +19,9 @@ exports.createItem = (req, res) => {
         schema: {
             "message": "¡Nuevo item creado exitosamente!",
             "item": {
-                "itemId": 7,
-                "ownerFullName": "David Xie Li",
+                "itemId": 50,
                 "ownerUserId": 1,
+                "ownerFullName": "David Xie Li",
                 "name": "Cartucho de tinta HP 63",
                 "location": 1,
                 "acquisitionDate": "2021-12-30",
@@ -74,7 +74,7 @@ exports.createItem = (req, res) => {
         res.status(201).json({
             message: '¡Nuevo item creado exitosamente!',
             item: {
-                itemId: 31,
+                itemId: 50,
                 ownerUserId: userId,
                 ownerFullName: user.fullName,
                 ...userPayload,
@@ -88,31 +88,23 @@ exports.createItem = (req, res) => {
 exports.getItem = (req, res) => {
     // #swagger.tags = ['Items']
     /* 
-    #swagger.description = 'Get item by id'
+    #swagger.description = 'Get item by id.'
     #swagger.parameters['id'] = { description: 'The id of the requested item' }
     /* 
     #swagger.responses[200] = {
         description: 'Successfully item response',
         schema: {
-            "body": {
-                    "itemId": 7,
-                    "ownerFullName": "David Xie Li",
-                    "ownerUserId": 1,
-                    "name": "Cartucho de tinta HP 63",
-                    "location": 1,
-                    "acquisitionDate": "2021-12-30",
-                    "description": "Tengo este cartucho de tinta negra HP 63 que no uso porque cambié de impresora",
-                    "wishlist": "Cartucho de tinta negra o de algún color HP 65",
-                    "itemState": 1,
-                    "category": 2,
-                    "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/filename.jpg"]
-                }
-        }
-    } 
-    #swagger.responses[401] = {
-        description: 'Unauthorized. User is not authenticated',
-        schema: {
-            message: 'Credenciales inválidas'
+            "itemId": 7,
+            "ownerFullName": "David Xie Li",
+            "ownerUserId": 1,
+            "name": "Cartucho de tinta HP 63",
+            "location": 1,
+            "acquisitionDate": "2021-12-30",
+            "description": "Tengo este cartucho de tinta negra HP 63 que no uso porque cambié de impresora",
+            "wishlist": "Cartucho de tinta negra o de algún color HP 65",
+            "itemState": 1,
+            "category": 2,
+            "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/filename.jpg"]
         }
     } 
     #swagger.responses[404] = {
@@ -124,7 +116,7 @@ exports.getItem = (req, res) => {
     #swagger.responses[500] = {
         description: 'Internal Server Error',
         schema: {
-            message: 'Ocurrió un error al crear el artículo. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: el servidor no responde'
+            message: 'Ocurrió un error al recuperar el artículo. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: el servidor no responde'
         }
     } 
     */
@@ -143,7 +135,7 @@ exports.getItem = (req, res) => {
 exports.getItemsByCategory = (req, res) => {
     // #swagger.tags = ['Items']
     /* 
-    #swagger.description = 'Get items by category, on a specific page, and with an optional search keyword that must match with the item name'
+    #swagger.description = 'Get items by category, on a specific page, and with an optional search keyword that must match with the item name.'
     #swagger.parameters['page'] = { in: 'query', description: 'The page where are the requested items', type: 'int' }
     #swagger.parameters['keyword'] = { in: 'query', description: 'The search keyword that must match with the item name', type: 'string' }
     #swagger.parameters['categoryId'] = { in: 'path', description: 'The category id of the requested items', type: 'int' }
@@ -216,8 +208,8 @@ exports.getItemsByCategory = (req, res) => {
 exports.editItem = (req, res) => {
     // #swagger.tags = ['Items']
     /*  
-    #swagger.description = 'Edit the information of an existing item only if you own it'    
-    #swagger.parameters['id'] = { description: 'The id of the article for which the information is to be edited' }
+    #swagger.description = 'Edit the information of an existing item only if you own it.'    
+    #swagger.parameters['id'] = { description: 'The id of the item for which the information is to be edited' }
     #swagger.parameters['obj'] = {
             in: 'body',
             description: 'The information of the item to be edited',
@@ -228,7 +220,7 @@ exports.editItem = (req, res) => {
     #swagger.responses[200] = {
         description: 'Successfully edited the specified item',
         schema: {
-            "message": "Item editado exitosamente.",
+            "message": "¡Item editado exitosamente!",
             "item": {
                 "ownerUserId": 1,
                 "ownerFullName": "David Xie Li",
@@ -315,7 +307,7 @@ exports.deleteItem = (req, res) => {
     // #swagger.tags = ['Items']
     /*  
         #swagger.parameters['id'] = { description: 'The id of the item to be deleted' }
-        #swagger.description = 'Delete an existing item if it exists and if you own the item'
+        #swagger.description = 'Delete an existing item if it exists and if you own the item.'
     */
     /*
     #swagger.responses[204] = {

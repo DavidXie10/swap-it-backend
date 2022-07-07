@@ -22,7 +22,7 @@
         "tags": [
           "Users"
         ],
-        "description": "Login an existing user to use the application. A token is returned with the necessary information to authenticate the user in future requests. The user data is also returned",
+        "description": "Login an existing user to use the application. A token is returned with the necessary information to authenticate the user in future requests. The user data is also returned.",
         "parameters": [
           {
             "name": "obj",
@@ -65,7 +65,7 @@
                 },
                 "photoUrl": {
                   "type": "string",
-                  "example": "http://t1.gstatic.com/licensed-image?q=tbn:ANd9GcTzXP8yS66xjGHKpFXxFA5oSAh0AjA8xPRcU7I88COgApoIfvdk0kenagYFoJhN6u-I"
+                  "example": "https://ci0137.s3.amazonaws.com/swap-it/uploads/anonymous_profile_photo.png"
                 },
                 "token": {
                   "type": "string",
@@ -112,7 +112,7 @@
                 },
                 "message": {
                   "type": "string",
-                  "example": "El email debe tener el formato de un correo electrónico y es requerido."
+                  "example": "El email debe tener el formato de un correo electrónico y es requerido"
                 }
               },
               "xml": {
@@ -143,7 +143,7 @@
         "tags": [
           "Users"
         ],
-        "description": "Logout the user from the application",
+        "description": "Logout the user from the application.",
         "parameters": [
           {
             "name": "id",
@@ -178,17 +178,13 @@
             "description": "Bad Request"
           },
           "401": {
-            "description": "Unauthorized. User is not authenticated",
+            "description": "Unauthorized. User is not authenticated or has invalid credentials",
             "schema": {
               "type": "object",
               "properties": {
-                "error": {
-                  "type": "boolean",
-                  "example": true
-                },
                 "message": {
                   "type": "string",
-                  "example": "El usuario no está autenticado"
+                  "example": "El usuario no está autenticado o posee credenciales inválidas"
                 }
               },
               "xml": {
@@ -204,7 +200,7 @@
         "tags": [
           "Users"
         ],
-        "description": "Update user personal information",
+        "description": "Update user personal information.",
         "parameters": [
           {
             "name": "id",
@@ -233,30 +229,25 @@
             "schema": {
               "type": "object",
               "properties": {
-                "body": {
-                  "type": "object",
-                  "properties": {
-                    "fullName": {
-                      "type": "string",
-                      "example": "John Doe"
-                    },
-                    "email": {
-                      "type": "string",
-                      "example": "john@correo.com"
-                    },
-                    "location": {
-                      "type": "number",
-                      "example": 1
-                    },
-                    "phoneNumber": {
-                      "type": "string",
-                      "example": "86808521"
-                    },
-                    "photoUrl": {
-                      "type": "string",
-                      "example": "https://ci0137.s3.amazonaws.com/swap-it/uploads/anonymous_profile_photo.png"
-                    }
-                  }
+                "fullName": {
+                  "type": "string",
+                  "example": "John Doe"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "john@correo.com"
+                },
+                "location": {
+                  "type": "number",
+                  "example": 1
+                },
+                "phoneNumber": {
+                  "type": "string",
+                  "example": "86808521"
+                },
+                "photoUrl": {
+                  "type": "string",
+                  "example": "https://ci0137.s3.amazonaws.com/swap-it/uploads/anonymous_profile_photo.png"
                 }
               },
               "xml": {
@@ -268,7 +259,7 @@
             "description": "Bad Request"
           },
           "401": {
-            "description": "Unauthorized. User is not authenticated",
+            "description": "Unauthorized. User is not authenticated or has invalid credentials",
             "schema": {
               "type": "object",
               "properties": {
@@ -290,10 +281,6 @@
                 "body": {
                   "type": "object",
                   "properties": {
-                    "fullName": {
-                      "type": "string",
-                      "example": "John Doe"
-                    },
                     "email": {
                       "type": "string",
                       "example": "john@correo.com"
@@ -345,23 +332,18 @@
         "tags": [
           "Users"
         ],
-        "description": "Get user items",
+        "description": "Get user items.",
         "parameters": [
           {
             "name": "userId",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "The id of the user who is requesting their items"
           },
           {
             "name": "authorization",
             "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "id",
-            "description": "The id of the user who is requesting their items",
-            "in": "query",
             "type": "string"
           }
         ],
@@ -475,7 +457,7 @@
         "tags": [
           "Items"
         ],
-        "description": "Create a new item with required information",
+        "description": "Create a new item with required information.",
         "parameters": [
           {
             "name": "authorization",
@@ -506,15 +488,15 @@
                   "properties": {
                     "itemId": {
                       "type": "number",
-                      "example": 7
-                    },
-                    "ownerFullName": {
-                      "type": "string",
-                      "example": "David Xie Li"
+                      "example": 50
                     },
                     "ownerUserId": {
                       "type": "number",
                       "example": 1
+                    },
+                    "ownerFullName": {
+                      "type": "string",
+                      "example": "David Xie Li"
                     },
                     "name": {
                       "type": "string",
@@ -655,7 +637,7 @@
         "tags": [
           "Items"
         ],
-        "description": "Get item by id",
+        "description": "Get item by id.",
         "parameters": [
           {
             "name": "id",
@@ -671,74 +653,54 @@
             "schema": {
               "type": "object",
               "properties": {
-                "body": {
-                  "type": "object",
-                  "properties": {
-                    "itemId": {
-                      "type": "number",
-                      "example": 7
-                    },
-                    "ownerFullName": {
-                      "type": "string",
-                      "example": "David Xie Li"
-                    },
-                    "ownerUserId": {
-                      "type": "number",
-                      "example": 1
-                    },
-                    "name": {
-                      "type": "string",
-                      "example": "Cartucho de tinta HP 63"
-                    },
-                    "location": {
-                      "type": "number",
-                      "example": 1
-                    },
-                    "acquisitionDate": {
-                      "type": "string",
-                      "example": "2021-12-30"
-                    },
-                    "description": {
-                      "type": "string",
-                      "example": "Tengo este cartucho de tinta negra HP 63 que no uso porque cambié de impresora"
-                    },
-                    "wishlist": {
-                      "type": "string",
-                      "example": "Cartucho de tinta negra o de algún color HP 65"
-                    },
-                    "itemState": {
-                      "type": "number",
-                      "example": 1
-                    },
-                    "category": {
-                      "type": "number",
-                      "example": 2
-                    },
-                    "photoUrls": {
-                      "type": "array",
-                      "example": [
-                        "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename.jpg"
-                      ],
-                      "items": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                }
-              },
-              "xml": {
-                "name": "main"
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized. User is not authenticated",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "message": {
+                "itemId": {
+                  "type": "number",
+                  "example": 7
+                },
+                "ownerFullName": {
                   "type": "string",
-                  "example": "Credenciales inválidas"
+                  "example": "David Xie Li"
+                },
+                "ownerUserId": {
+                  "type": "number",
+                  "example": 1
+                },
+                "name": {
+                  "type": "string",
+                  "example": "Cartucho de tinta HP 63"
+                },
+                "location": {
+                  "type": "number",
+                  "example": 1
+                },
+                "acquisitionDate": {
+                  "type": "string",
+                  "example": "2021-12-30"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "Tengo este cartucho de tinta negra HP 63 que no uso porque cambié de impresora"
+                },
+                "wishlist": {
+                  "type": "string",
+                  "example": "Cartucho de tinta negra o de algún color HP 65"
+                },
+                "itemState": {
+                  "type": "number",
+                  "example": 1
+                },
+                "category": {
+                  "type": "number",
+                  "example": 2
+                },
+                "photoUrls": {
+                  "type": "array",
+                  "example": [
+                    "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename.jpg"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
                 }
               },
               "xml": {
@@ -768,7 +730,7 @@
               "properties": {
                 "message": {
                   "type": "string",
-                  "example": "Ocurrió un error al crear el artículo. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: el servidor no responde"
+                  "example": "Ocurrió un error al recuperar el artículo. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: el servidor no responde"
                 }
               },
               "xml": {
@@ -782,14 +744,14 @@
         "tags": [
           "Items"
         ],
-        "description": "Edit the information of an existing item only if you own it",
+        "description": "Edit the information of an existing item only if you own it.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string",
-            "description": "The id of the article for which the information is to be edited"
+            "description": "The id of the item for which the information is to be edited"
           },
           {
             "name": "authorization",
@@ -813,7 +775,7 @@
               "properties": {
                 "message": {
                   "type": "string",
-                  "example": "Item editado exitosamente."
+                  "example": "¡Item editado exitosamente!"
                 },
                 "item": {
                   "type": "object",
@@ -980,7 +942,7 @@
         "tags": [
           "Items"
         ],
-        "description": "Delete an existing item if it exists and if you own the item",
+        "description": "Delete an existing item if it exists and if you own the item.",
         "parameters": [
           {
             "name": "id",
@@ -1055,7 +1017,7 @@
         "tags": [
           "Items"
         ],
-        "description": "Get items by category, on a specific page, and with an optional search keyword that must match with the item name",
+        "description": "Get items by category, on a specific page, and with an optional search keyword that must match with the item name.",
         "parameters": [
           {
             "name": "categoryId",
@@ -1184,7 +1146,7 @@
         "tags": [
           "Exchanges"
         ],
-        "description": "Send an email with a proposal to exchange the items selected by one user for a specific item of another user",
+        "description": "Send an email with a proposal to exchange the items selected by one user for a specific item of another user.",
         "parameters": [
           {
             "name": "authorization",
@@ -1277,7 +1239,7 @@
         "tags": [
           "Uploads"
         ],
-        "description": "Upload a minimum of 1 image and a maximum of 3 and get the urls, types and sizes of the uploaded images",
+        "description": "Upload a minimum of 1 image and a maximum of 3 and get the urls, types and sizes of the uploaded images.",
         "consumes": [
           "multipart/form-data"
         ],
@@ -1393,7 +1355,7 @@
         "tags": [
           "Uploads"
         ],
-        "description": "Delete uploaded images by passing their urls",
+        "description": "Delete uploaded images by passing their urls.",
         "parameters": [
           {
             "name": "authorization",

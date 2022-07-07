@@ -5,7 +5,7 @@ const { findUserById } = require("../utils/constants");
 exports.exchangeItems = async (req, res) => {
     // #swagger.tags = ['Exchanges']
     /*  
-    #swagger.description = 'Send an email with a proposal to exchange the items selected by one user for a specific item of another user'
+    #swagger.description = 'Send an email with a proposal to exchange the items selected by one user for a specific item of another user.'
     #swagger.parameters['obj'] = {
         in: 'body',
         description: 'Exchange items proposal information',

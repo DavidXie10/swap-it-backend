@@ -2,11 +2,10 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { isItemFromUser, findUserByEmail, findUserById, findItemsByUser } = require('../utils/constants');
 
-
 exports.loginUser = async (req, res) => {
     // #swagger.tags = ['Users']
     /* 
-    #swagger.description = 'Login an existing user to use the application. A token is returned with the necessary information to authenticate the user in future requests. The user data is also returned'
+    #swagger.description = 'Login an existing user to use the application. A token is returned with the necessary information to authenticate the user in future requests. The user data is also returned.'
     #swagger.parameters['obj'] = {
         in: 'body',
         description: 'User credentials',
@@ -21,7 +20,7 @@ exports.loginUser = async (req, res) => {
                 email: "john@correo.com",
                 location: 1,
                 phoneNumber: "86808521",
-                photoUrl: "http://t1.gstatic.com/licensed-image?q=tbn:ANd9GcTzXP8yS66xjGHKpFXxFA5oSAh0AjA8xPRcU7I88COgApoIfvdk0kenagYFoJhN6u-I",
+                photoUrl: "https://ci0137.s3.amazonaws.com/swap-it/uploads/anonymous_profile_photo.png",
                 token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaXNBdXRoZW50aWNhdGVkIjp0cnVlLCJpYXQiOjE2NTY1Mzg0MzUsImV4cCI6MTY1NjcxMTIzNX0.gwyF47Lf5v6iO6_Rz4ta8EhOmLY47ht6ClRI7bb22zw"
             }
     } 
@@ -38,7 +37,7 @@ exports.loginUser = async (req, res) => {
                 "email": "John Doe",
                 "password": "prueba1234"
             },
-            "message": "El email debe tener el formato de un correo electrónico y es requerido."
+            "message": "El email debe tener el formato de un correo electrónico y es requerido"
         }
     } 
     #swagger.responses[500] = {
@@ -72,7 +71,7 @@ exports.logoutUser = (req, res) => {
     // #swagger.tags = ['Users']
     /*  
     #swagger.parameters['id'] = { description: 'The id of the user that is logging out from the app' }
-    #swagger.description = 'Logout the user from the application'
+    #swagger.description = 'Logout the user from the application.'
     */
     /* #swagger.responses[200] = {
         description: 'User successfully logged out of the app',
@@ -81,20 +80,26 @@ exports.logoutUser = (req, res) => {
         }
     } 
     #swagger.responses[401] = {
-        description: 'Unauthorized. User is not authenticated',
+        description: 'Unauthorized. User is not authenticated or has invalid credentials',
         schema: {
-            error: true,
-            message: 'El usuario no está autenticado',
+            message: 'El usuario no está autenticado o posee credenciales inválidas',
         }
     } 
     */
-    res.status(200).json({message: 'Cierre de sesión exitoso para el usuario ' + req.params.id});
+    const token = req.headers.authorization.split(' ')[1];
+    const decodedToken = jwt.verify(token, process.env.JWT_KEY);
+    if(decodedToken.id == req.params.id){
+        res.status(200).json({message: 'Cierre de sesión exitoso para el usuario ' + req.params.id});
+    }else{
+        res.status(401).json({message: 'El usuario no está autenticado o posee credenciales inválidas'});
+    }
+
 }
 
 exports.updateUser = (req, res) => {
     // #swagger.tags = ['Users']
     /*  
-    #swagger.description = 'Update user personal information'
+    #swagger.description = 'Update user personal information.'
     #swagger.parameters['id'] = { description: 'The id of the user who is updating their data' }
     #swagger.parameters['obj'] = {
         in: 'body',
@@ -105,17 +110,15 @@ exports.updateUser = (req, res) => {
     /* #swagger.responses[200] = {    
         description: 'User successfully edited',
         schema: {
-            "body": {
-                fullName: "John Doe",
-                email: "john@correo.com",
-                location: 1,
-                phoneNumber: "86808521",
-                photoUrl: "https://ci0137.s3.amazonaws.com/swap-it/uploads/anonymous_profile_photo.png",
-            }
+            fullName: "John Doe",
+            email: "john@correo.com",
+            location: 1,
+            phoneNumber: "86808521",
+            photoUrl: "https://ci0137.s3.amazonaws.com/swap-it/uploads/anonymous_profile_photo.png",
         }
     } 
     #swagger.responses[401] = {
-        description: 'Unauthorized. User is not authenticated',
+        description: 'Unauthorized. User is not authenticated or has invalid credentials',
         schema: {
             message: 'Credenciales inválidas',
         }
@@ -124,7 +127,6 @@ exports.updateUser = (req, res) => {
         description: 'Unprocessable Entity',
         schema: {
             "body": {
-                fullName: "John Doe",
                 email: "john@correo.com",
                 location: 1,
                 phoneNumber: "86808521",
@@ -147,13 +149,23 @@ exports.updateUser = (req, res) => {
         const user = findUserById(req.params.id);
         if(!user) {
             res.status(401).json({
-                message: 'Credenciales inválidas.',
+                message: 'Credenciales inválidas',
             });
             return;   
         }
-        if(updateUserData(user, userPayload)){
-            res.status(200).json(userPayload);
-        }
+
+        const token = req.headers.authorization.split(' ')[1];
+        const decodedToken = jwt.verify(token, process.env.JWT_KEY);
+        if(decodedToken.id == req.params.id){
+            if(updateUserData(user, userPayload)){
+                res.status(200).json(userPayload);
+            } 
+        }else{
+            res.status(401).json({
+                message: 'Credenciales inválidas',
+            });
+            return;   
+        } 
     } catch(error) {
         res.status(500).json({
             message: 'Ocurrió un error al actualizar la información del usuario. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: ' + error
@@ -164,8 +176,8 @@ exports.updateUser = (req, res) => {
 exports.getItemsByUser = (req, res) => {
     // #swagger.tags = ['Users']
     /*  
-    #swagger.description = 'Get user items'
-    #swagger.parameters['id'] = { description: 'The id of the user who is requesting their items' }
+    #swagger.description = 'Get user items.'
+    #swagger.parameters['userId'] = { description: 'The id of the user who is requesting their items' }
     */
     /* #swagger.responses[200] = {
         description: 'Successfully user items response',

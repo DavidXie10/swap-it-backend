@@ -1,7 +1,7 @@
 exports.uploadFiles = (req, res) => {
     // #swagger.tags = ['Uploads']
     /* 
-    #swagger.description = 'Upload a minimum of 1 image and a maximum of 3 and get the urls, types and sizes of the uploaded images'
+    #swagger.description = 'Upload a minimum of 1 image and a maximum of 3 and get the urls, types and sizes of the uploaded images.'
     #swagger.consumes = ['multipart/form-data']
     #swagger.parameters['multFiles'] = {
         in: 'formData',
@@ -76,7 +76,7 @@ exports.uploadFiles = (req, res) => {
 exports.deleteUrls = (req, res) => {
     // #swagger.tags = ['Uploads']
     /*  
-    #swagger.description = 'Delete uploaded images by passing their urls'
+    #swagger.description = 'Delete uploaded images by passing their urls.'
     #swagger.parameters['obj'] = {
         in: 'body',
         description: 'The array of urls to be deleted',
