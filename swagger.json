@@ -1023,7 +1023,7 @@
             "name": "categoryId",
             "in": "path",
             "required": true,
-            "type": "int",
+            "type": "string",
             "description": "The category id of the requested items"
           },
           {
@@ -1035,7 +1035,7 @@
           {
             "name": "keyword",
             "in": "query",
-            "description": "The search keyword that must match with the item name",
+            "description": "The search string that must match with the item name",
             "type": "string"
           }
         ],

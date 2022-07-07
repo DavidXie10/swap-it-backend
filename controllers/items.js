@@ -135,41 +135,44 @@ exports.getItem = (req, res) => {
 exports.getItemsByCategory = (req, res) => {
     // #swagger.tags = ['Items']
     /* 
-    #swagger.description = 'Get items by category, on a specific page, and with an optional search keyword that must match with the item name.'
+    #swagger.description = 'Get items by category, on a specific page, and with an optional search keyword that must match with the item name. Also get the number of pages in this category'
+    #swagger.parameters['categoryId'] = { in: 'path', description: 'The category id of the requested items'}
     #swagger.parameters['page'] = { in: 'query', description: 'The page where are the requested items', type: 'int' }
-    #swagger.parameters['keyword'] = { in: 'query', description: 'The search keyword that must match with the item name', type: 'string' }
-    #swagger.parameters['categoryId'] = { in: 'path', description: 'The category id of the requested items', type: 'int' }
+    #swagger.parameters['keyword'] = { in: 'query', description: 'The search string that must match with the item name', type: 'string' }
     #swagger.responses[200] = {
         description: 'Successfully items response',
         schema: {
-            "body": [
-                {
-                    "itemId": 1,
-                    "ownerFullName": "David Xie Li",
-                    "ownerUserId": 1,
-                    "name": "Iphone 12",
-                    "location": 4,
-                    "acquisitionDate": "2022-01-15",
-                    "description": "Iphone 12 morado, con cargador y audifonos. Batería en un 80%",
-                    "wishlist": "Celular Android, de preferencia marca Samsung o Huawei",
-                    "itemState": 2,
-                    "category": 2,
-                    "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/24751111-3d23-4915-8a13-d1d551c23c3d.jpg","https://ci0137.s3.amazonaws.com/swap-it/uploads/a64ebe3d-de42-4bd4-854b-688e8ef88729.jpg","https://ci0137.s3.amazonaws.com/swap-it/uploads/faac1354-e5ea-4373-9cee-e45582cb8c85.jpg"]
-                },
-                {
-                    "itemId": 2,
-                    "ownerFullName": "Sol Valle Vega",
-                    "ownerUserId": 3,
-                    "name": "Smart TV Xiaomi",
-                    "location": 4,
-                    "acquisitionDate": "2022-05-22",
-                    "description": "Pantalla smart TV de 43 pulgadas con todos sus accesorios (cables, patas, brazo para pegar en la pared)",
-                    "wishlist": "Biclicleta o bicimoto",
-                    "itemState": 1,
-                    "category": 2,
-                    "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/347b5747-afeb-4161-a262-53bf8a039f34.jpg"]
-                }
-            ]
+            "body": {
+                "pagesCount": 1,
+                "items": [
+                    {
+                        "itemId": 1,
+                        "ownerFullName": "David Xie Li",
+                        "ownerUserId": 1,
+                        "name": "Iphone 12",
+                        "location": 4,
+                        "acquisitionDate": "2022-01-15",
+                        "description": "Iphone 12 morado, con cargador y audifonos. Batería en un 80%",
+                        "wishlist": "Celular Android, de preferencia marca Samsung o Huawei",
+                        "itemState": 2,
+                        "category": 2,
+                        "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/24751111-3d23-4915-8a13-d1d551c23c3d.jpg","https://ci0137.s3.amazonaws.com/swap-it/uploads/a64ebe3d-de42-4bd4-854b-688e8ef88729.jpg","https://ci0137.s3.amazonaws.com/swap-it/uploads/faac1354-e5ea-4373-9cee-e45582cb8c85.jpg"]
+                    },
+                    {
+                        "itemId": 2,
+                        "ownerFullName": "Sol Valle Vega",
+                        "ownerUserId": 3,
+                        "name": "Smart TV Xiaomi",
+                        "location": 4,
+                        "acquisitionDate": "2022-05-22",
+                        "description": "Pantalla smart TV de 43 pulgadas con todos sus accesorios (cables, patas, brazo para pegar en la pared)",
+                        "wishlist": "Biclicleta o bicimoto",
+                        "itemState": 1,
+                        "category": 2,
+                        "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/347b5747-afeb-4161-a262-53bf8a039f34.jpg"]
+                    }
+                ]
+            }
         }
     } 
     #swagger.responses[404] = {
@@ -194,7 +197,7 @@ exports.getItemsByCategory = (req, res) => {
         if(!page){
             res.json({pagesCount: pagesCount, items: itemsByCategory});
         } else { 
-            if(page >= pagesCount && pagesCount){
+            if(pagesCount && page >= pagesCount){
                 res.status(404).json({message: 'No se encuentran los artículos de la página solicitada. Intente con un número de página menor a ' + pagesCount });
                 return;
             }
