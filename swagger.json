@@ -10,7 +10,7 @@
       "url": "https://swap-it-cr.netlify.com/"
     }
   },
-  "host": "localhost:8000",
+  "host": "swap-it-api.herokuapp.com",
   "basePath": "/",
   "schemes": [
     "http",

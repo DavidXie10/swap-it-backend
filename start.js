@@ -11,8 +11,7 @@ const doc = {
             url: "https://swap-it-cr.netlify.com/", 
         },      
     },
-    //host: 'swap-it-api.herokuapp.com',
-    host: 'localhost:8000',
+    host: 'swap-it-api.herokuapp.com',
     schemes: ['http', 'https'],
     definitions: {
         LoginUser: {
