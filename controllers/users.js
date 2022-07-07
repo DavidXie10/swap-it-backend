@@ -180,36 +180,34 @@ exports.getItemsByUser = (req, res) => {
     */
     /* #swagger.responses[200] = {
         description: 'Successfully user items response',
-        schema: {
-            "body": [
-                {
-                    "itemId": 7,
-                    "ownerFullName": "David Xie Li",
-                    "ownerUserId": 1,
-                    "name": "Cartucho de tinta HP 63",
-                    "location": 1,
-                    "acquisitionDate": "2021-12-30",
-                    "description": "Tengo este cartucho de tinta negra HP 63 que no uso porque cambié de impresora",
-                    "wishlist": "Cartucho de tinta negra o de algún color HP 65",
-                    "itemState": 1,
-                    "category": 2,
-                    "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/filename.jpg"]
-                },
-                {
-                    "itemId": 9,
-                    "ownerFullName": "David Xie Li",
-                    "ownerUserId": 1,
-                    "name": "Cámara web",
-                    "location": 2,
-                    "acquisitionDate": "2021-07-23",
-                    "description": "Cámara web Full HD 1080P con cubierta de privacidad para videollamadas. Video realista de 1920 x 1080p, lente antirreflejo de 4 capas. Distancia focal fija de 1.97 a 197 pulgadas",
-                    "wishlist": "Guantes de box",
-                    "itemState": 2,
-                    "category": 2,
-                    "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/9585387f-cbab-4477-b3ae-4949fe99a1db.jpg"]
-                }
-            ]
-        }
+        schema: {[
+            {
+                "itemId": 7,
+                "ownerFullName": "David Xie Li",
+                "ownerUserId": 1,
+                "name": "Cartucho de tinta HP 63",
+                "location": 1,
+                "acquisitionDate": "2021-12-30",
+                "description": "Tengo este cartucho de tinta negra HP 63 que no uso porque cambié de impresora",
+                "wishlist": "Cartucho de tinta negra o de algún color HP 65",
+                "itemState": 1,
+                "category": 2,
+                "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/filename.jpg"]
+            },
+            {
+                "itemId": 9,
+                "ownerFullName": "David Xie Li",
+                "ownerUserId": 1,
+                "name": "Cámara web",
+                "location": 2,
+                "acquisitionDate": "2021-07-23",
+                "description": "Cámara web Full HD 1080P con cubierta de privacidad para videollamadas. Video realista de 1920 x 1080p, lente antirreflejo de 4 capas. Distancia focal fija de 1.97 a 197 pulgadas",
+                "wishlist": "Guantes de box",
+                "itemState": 2,
+                "category": 2,
+                "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/9585387f-cbab-4477-b3ae-4949fe99a1db.jpg"]
+            }
+        ]}
     } 
     #swagger.responses[401] = {
         description: 'Unauthorized. User is not authenticated or has invalid credentials',
