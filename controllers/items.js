@@ -142,37 +142,35 @@ exports.getItemsByCategory = (req, res) => {
     #swagger.responses[200] = {
         description: 'Successfully items response',
         schema: {
-            "body": {
-                "pagesCount": 1,
-                "items": [
-                    {
-                        "itemId": 1,
-                        "ownerFullName": "David Xie Li",
-                        "ownerUserId": 1,
-                        "name": "Iphone 12",
-                        "location": 4,
-                        "acquisitionDate": "2022-01-15",
-                        "description": "Iphone 12 morado, con cargador y audifonos. Batería en un 80%",
-                        "wishlist": "Celular Android, de preferencia marca Samsung o Huawei",
-                        "itemState": 2,
-                        "category": 2,
-                        "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/24751111-3d23-4915-8a13-d1d551c23c3d.jpg","https://ci0137.s3.amazonaws.com/swap-it/uploads/a64ebe3d-de42-4bd4-854b-688e8ef88729.jpg","https://ci0137.s3.amazonaws.com/swap-it/uploads/faac1354-e5ea-4373-9cee-e45582cb8c85.jpg"]
-                    },
-                    {
-                        "itemId": 2,
-                        "ownerFullName": "Sol Valle Vega",
-                        "ownerUserId": 3,
-                        "name": "Smart TV Xiaomi",
-                        "location": 4,
-                        "acquisitionDate": "2022-05-22",
-                        "description": "Pantalla smart TV de 43 pulgadas con todos sus accesorios (cables, patas, brazo para pegar en la pared)",
-                        "wishlist": "Biclicleta o bicimoto",
-                        "itemState": 1,
-                        "category": 2,
-                        "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/347b5747-afeb-4161-a262-53bf8a039f34.jpg"]
-                    }
-                ]
-            }
+            "pagesCount": 1,
+            "items": [
+                {
+                    "itemId": 1,
+                    "ownerFullName": "David Xie Li",
+                    "ownerUserId": 1,
+                    "name": "Iphone 12",
+                    "location": 4,
+                    "acquisitionDate": "2022-01-15",
+                    "description": "Iphone 12 morado, con cargador y audifonos. Batería en un 80%",
+                    "wishlist": "Celular Android, de preferencia marca Samsung o Huawei",
+                    "itemState": 2,
+                    "category": 2,
+                    "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/24751111-3d23-4915-8a13-d1d551c23c3d.jpg","https://ci0137.s3.amazonaws.com/swap-it/uploads/a64ebe3d-de42-4bd4-854b-688e8ef88729.jpg","https://ci0137.s3.amazonaws.com/swap-it/uploads/faac1354-e5ea-4373-9cee-e45582cb8c85.jpg"]
+                },
+                {
+                    "itemId": 2,
+                    "ownerFullName": "Sol Valle Vega",
+                    "ownerUserId": 3,
+                    "name": "Smart TV Xiaomi",
+                    "location": 4,
+                    "acquisitionDate": "2022-05-22",
+                    "description": "Pantalla smart TV de 43 pulgadas con todos sus accesorios (cables, patas, brazo para pegar en la pared)",
+                    "wishlist": "Biclicleta o bicimoto",
+                    "itemState": 1,
+                    "category": 2,
+                    "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/347b5747-afeb-4161-a262-53bf8a039f34.jpg"]
+                }
+            ]
         }
     } 
     #swagger.responses[404] = {
