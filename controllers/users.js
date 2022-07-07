@@ -56,7 +56,7 @@ exports.loginUser = async (req, res) => {
             return;      
         }
 
-        const token = jwt.sign({ id: user.id, isAuthenticated: true }, process.env.JWT_KEY, { expiresIn: '7d' });
+        const token = jwt.sign({ id: user.id, isAuthenticated: true }, process.env.JWT_KEY, { expiresIn: '5d' });
 
         res.status(200).json({
             ...user,
@@ -93,7 +93,6 @@ exports.logoutUser = (req, res) => {
     }else{
         res.status(401).json({message: 'El usuario no está autenticado o posee credenciales inválidas'});
     }
-
 }
 
 exports.updateUser = (req, res) => {

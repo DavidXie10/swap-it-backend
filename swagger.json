@@ -1017,7 +1017,7 @@
         "tags": [
           "Items"
         ],
-        "description": "Get items by category, on a specific page, and with an optional search keyword that must match with the item name.",
+        "description": "Get items by category, on a specific page, and with an optional search keyword that must match with the item name. Also get the number of pages in this category",
         "parameters": [
           {
             "name": "categoryId",
@@ -1046,57 +1046,66 @@
               "type": "object",
               "properties": {
                 "body": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "itemId": {
-                        "type": "number",
-                        "example": 2
-                      },
-                      "ownerFullName": {
-                        "type": "string",
-                        "example": "Sol Valle Vega"
-                      },
-                      "ownerUserId": {
-                        "type": "number",
-                        "example": 3
-                      },
-                      "name": {
-                        "type": "string",
-                        "example": "Smart TV Xiaomi"
-                      },
-                      "location": {
-                        "type": "number",
-                        "example": 4
-                      },
-                      "acquisitionDate": {
-                        "type": "string",
-                        "example": "2022-05-22"
-                      },
-                      "description": {
-                        "type": "string",
-                        "example": "Pantalla smart TV de 43 pulgadas con todos sus accesorios (cables, patas, brazo para pegar en la pared)"
-                      },
-                      "wishlist": {
-                        "type": "string",
-                        "example": "Biclicleta o bicimoto"
-                      },
-                      "itemState": {
-                        "type": "number",
-                        "example": 1
-                      },
-                      "category": {
-                        "type": "number",
-                        "example": 2
-                      },
-                      "photoUrls": {
-                        "type": "array",
-                        "example": [
-                          "https://ci0137.s3.amazonaws.com/swap-it/uploads/347b5747-afeb-4161-a262-53bf8a039f34.jpg"
-                        ],
-                        "items": {
-                          "type": "string"
+                  "type": "object",
+                  "properties": {
+                    "pagesCount": {
+                      "type": "number",
+                      "example": 1
+                    },
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "itemId": {
+                            "type": "number",
+                            "example": 2
+                          },
+                          "ownerFullName": {
+                            "type": "string",
+                            "example": "Sol Valle Vega"
+                          },
+                          "ownerUserId": {
+                            "type": "number",
+                            "example": 3
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Smart TV Xiaomi"
+                          },
+                          "location": {
+                            "type": "number",
+                            "example": 4
+                          },
+                          "acquisitionDate": {
+                            "type": "string",
+                            "example": "2022-05-22"
+                          },
+                          "description": {
+                            "type": "string",
+                            "example": "Pantalla smart TV de 43 pulgadas con todos sus accesorios (cables, patas, brazo para pegar en la pared)"
+                          },
+                          "wishlist": {
+                            "type": "string",
+                            "example": "Biclicleta o bicimoto"
+                          },
+                          "itemState": {
+                            "type": "number",
+                            "example": 1
+                          },
+                          "category": {
+                            "type": "number",
+                            "example": 2
+                          },
+                          "photoUrls": {
+                            "type": "array",
+                            "example": [
+                              "https://ci0137.s3.amazonaws.com/swap-it/uploads/347b5747-afeb-4161-a262-53bf8a039f34.jpg"
+                            ],
+                            "items": {
+                              "type": "string"
+                            }
+                          }
                         }
                       }
                     }
