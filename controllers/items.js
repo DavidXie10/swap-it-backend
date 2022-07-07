@@ -135,7 +135,7 @@ exports.getItem = (req, res) => {
 exports.getItemsByCategory = (req, res) => {
     // #swagger.tags = ['Items']
     /* 
-    #swagger.description = 'Get items by category, on a specific page, and with an optional search keyword that must match with the item name. Also get the number of pages in this category'
+    #swagger.description = 'Get items by category, on a specific page, and with an optional search keyword that must match with the item name. Also get the number of pages in this category.'
     #swagger.parameters['categoryId'] = { in: 'path', description: 'The category id of the requested items'}
     #swagger.parameters['page'] = { in: 'query', description: 'The page where are the requested items', type: 'int' }
     #swagger.parameters['keyword'] = { in: 'query', description: 'The search string that must match with the item name', type: 'string' }

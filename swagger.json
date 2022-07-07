@@ -349,105 +349,16 @@
         ],
         "responses": {
           "200": {
-            "description": "Successfully user items response",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "body": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "itemId": {
-                        "type": "number",
-                        "example": 9
-                      },
-                      "ownerFullName": {
-                        "type": "string",
-                        "example": "David Xie Li"
-                      },
-                      "ownerUserId": {
-                        "type": "number",
-                        "example": 1
-                      },
-                      "name": {
-                        "type": "string",
-                        "example": "Cámara web"
-                      },
-                      "location": {
-                        "type": "number",
-                        "example": 2
-                      },
-                      "acquisitionDate": {
-                        "type": "string",
-                        "example": "2021-07-23"
-                      },
-                      "description": {
-                        "type": "string",
-                        "example": "Cámara web Full HD 1080P con cubierta de privacidad para videollamadas. Video realista de 1920 x 1080p, lente antirreflejo de 4 capas. Distancia focal fija de 1.97 a 197 pulgadas"
-                      },
-                      "wishlist": {
-                        "type": "string",
-                        "example": "Guantes de box"
-                      },
-                      "itemState": {
-                        "type": "number",
-                        "example": 2
-                      },
-                      "category": {
-                        "type": "number",
-                        "example": 2
-                      },
-                      "photoUrls": {
-                        "type": "array",
-                        "example": [
-                          "https://ci0137.s3.amazonaws.com/swap-it/uploads/9585387f-cbab-4477-b3ae-4949fe99a1db.jpg"
-                        ],
-                        "items": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              },
-              "xml": {
-                "name": "main"
-              }
-            }
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
           },
           "401": {
-            "description": "Unauthorized. User is not authenticated or has invalid credentials",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "message": {
-                  "type": "string",
-                  "example": "No tiene los permisos para acceder a los artículos solicitados"
-                }
-              },
-              "xml": {
-                "name": "main"
-              }
-            }
+            "description": "Unauthorized"
           },
           "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "message": {
-                  "type": "string",
-                  "example": "Ocurrió un error al cargar los artículos del usuario. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: el servidor no responde"
-                }
-              },
-              "xml": {
-                "name": "main"
-              }
-            }
+            "description": "Internal Server Error"
           }
         }
       }
@@ -1017,7 +928,7 @@
         "tags": [
           "Items"
         ],
-        "description": "Get items by category, on a specific page, and with an optional search keyword that must match with the item name. Also get the number of pages in this category",
+        "description": "Get items by category, on a specific page, and with an optional search keyword that must match with the item name. Also get the number of pages in this category.",
         "parameters": [
           {
             "name": "categoryId",
@@ -1045,67 +956,62 @@
             "schema": {
               "type": "object",
               "properties": {
-                "body": {
-                  "type": "object",
-                  "properties": {
-                    "pagesCount": {
-                      "type": "number",
-                      "example": 1
-                    },
-                    "items": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "itemId": {
-                            "type": "number",
-                            "example": 2
-                          },
-                          "ownerFullName": {
-                            "type": "string",
-                            "example": "Sol Valle Vega"
-                          },
-                          "ownerUserId": {
-                            "type": "number",
-                            "example": 3
-                          },
-                          "name": {
-                            "type": "string",
-                            "example": "Smart TV Xiaomi"
-                          },
-                          "location": {
-                            "type": "number",
-                            "example": 4
-                          },
-                          "acquisitionDate": {
-                            "type": "string",
-                            "example": "2022-05-22"
-                          },
-                          "description": {
-                            "type": "string",
-                            "example": "Pantalla smart TV de 43 pulgadas con todos sus accesorios (cables, patas, brazo para pegar en la pared)"
-                          },
-                          "wishlist": {
-                            "type": "string",
-                            "example": "Biclicleta o bicimoto"
-                          },
-                          "itemState": {
-                            "type": "number",
-                            "example": 1
-                          },
-                          "category": {
-                            "type": "number",
-                            "example": 2
-                          },
-                          "photoUrls": {
-                            "type": "array",
-                            "example": [
-                              "https://ci0137.s3.amazonaws.com/swap-it/uploads/347b5747-afeb-4161-a262-53bf8a039f34.jpg"
-                            ],
-                            "items": {
-                              "type": "string"
-                            }
-                          }
+                "pagesCount": {
+                  "type": "number",
+                  "example": 1
+                },
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "itemId": {
+                        "type": "number",
+                        "example": 2
+                      },
+                      "ownerFullName": {
+                        "type": "string",
+                        "example": "Sol Valle Vega"
+                      },
+                      "ownerUserId": {
+                        "type": "number",
+                        "example": 3
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "Smart TV Xiaomi"
+                      },
+                      "location": {
+                        "type": "number",
+                        "example": 4
+                      },
+                      "acquisitionDate": {
+                        "type": "string",
+                        "example": "2022-05-22"
+                      },
+                      "description": {
+                        "type": "string",
+                        "example": "Pantalla smart TV de 43 pulgadas con todos sus accesorios (cables, patas, brazo para pegar en la pared)"
+                      },
+                      "wishlist": {
+                        "type": "string",
+                        "example": "Biclicleta o bicimoto"
+                      },
+                      "itemState": {
+                        "type": "number",
+                        "example": 1
+                      },
+                      "category": {
+                        "type": "number",
+                        "example": 2
+                      },
+                      "photoUrls": {
+                        "type": "array",
+                        "example": [
+                          "https://ci0137.s3.amazonaws.com/swap-it/uploads/347b5747-afeb-4161-a262-53bf8a039f34.jpg"
+                        ],
+                        "items": {
+                          "type": "string"
                         }
                       }
                     }
