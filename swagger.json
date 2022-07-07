@@ -349,16 +349,100 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Successfully user items response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "itemId": {
+                    "type": "number",
+                    "example": 9
+                  },
+                  "ownerFullName": {
+                    "type": "string",
+                    "example": "David Xie Li"
+                  },
+                  "ownerUserId": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "Cámara web"
+                  },
+                  "location": {
+                    "type": "number",
+                    "example": 2
+                  },
+                  "acquisitionDate": {
+                    "type": "string",
+                    "example": "2021-07-23"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "Cámara web Full HD 1080P con cubierta de privacidad para videollamadas. Video realista de 1920 x 1080p, lente antirreflejo de 4 capas. Distancia focal fija de 1.97 a 197 pulgadas"
+                  },
+                  "wishlist": {
+                    "type": "string",
+                    "example": "Guantes de box"
+                  },
+                  "itemState": {
+                    "type": "number",
+                    "example": 2
+                  },
+                  "category": {
+                    "type": "number",
+                    "example": 2
+                  },
+                  "photoUrls": {
+                    "type": "array",
+                    "example": [
+                      "https://ci0137.s3.amazonaws.com/swap-it/uploads/9585387f-cbab-4477-b3ae-4949fe99a1db.jpg"
+                    ],
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           },
           "400": {
             "description": "Bad Request"
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized. User is not authenticated or has invalid credentials",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "No tiene los permisos para acceder a los artículos solicitados"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Ocurrió un error al cargar los artículos del usuario. Intente nuevamente. Si el error persiste, contacte al administrador del sistema. Error: el servidor no responde"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           }
         }
       }

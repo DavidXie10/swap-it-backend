@@ -180,7 +180,7 @@ exports.getItemsByUser = (req, res) => {
     */
     /* #swagger.responses[200] = {
         description: 'Successfully user items response',
-        schema: {[
+        schema: [
             {
                 "itemId": 7,
                 "ownerFullName": "David Xie Li",
@@ -207,7 +207,7 @@ exports.getItemsByUser = (req, res) => {
                 "category": 2,
                 "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/9585387f-cbab-4477-b3ae-4949fe99a1db.jpg"]
             }
-        ]}
+        ]
     } 
     #swagger.responses[401] = {
         description: 'Unauthorized. User is not authenticated or has invalid credentials',
