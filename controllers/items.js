@@ -241,7 +241,7 @@ exports.editItem = (req, res) => {
     #swagger.responses[401] = {
         description: 'Unauthorized',
         schema: {
-            message: 'No está autorizado para editar el item.'
+            message: 'No está autorizado para editar el item'
         }
     } 
     #swagger.responses[404] = {
@@ -265,7 +265,7 @@ exports.editItem = (req, res) => {
                     "https://ci0137.s3.amazonaws.com/swap-it/uploads/filename2.jpg"
                 ]
             },
-            "message": "Debe especificar la provincia en la que se encuentra con un número: San José[1], Alajuela[2], Cartago[3], Heredia[4], Guanacaste[5], Puntarenas[6], Limón[7]."
+            "message": "Debe especificar la provincia en la que se encuentra con un número: San José[1], Alajuela[2], Cartago[3], Heredia[4], Guanacaste[5], Puntarenas[6], Limón[7]"
         }
     }
     #swagger.responses[500] = {
@@ -286,7 +286,7 @@ exports.editItem = (req, res) => {
         }
 
         if(!isItemFromUser(req.headers.authorization.split(' ')[1], item.ownerUserId)){
-            res.status(401).json({message: 'No está autorizado para editar el item.'});
+            res.status(401).json({message: 'No está autorizado para editar el item'});
             return;      
         }
 
@@ -316,7 +316,7 @@ exports.deleteItem = (req, res) => {
     #swagger.responses[401] = {
         description: 'Unauthorized',
         schema: {
-            message: 'No está autorizado para eliminar el item.'
+            message: 'No está autorizado para eliminar el item'
         }
     } 
     #swagger.responses[404] = {
@@ -337,12 +337,12 @@ exports.deleteItem = (req, res) => {
         const item = findItemById(itemId);
     
         if(!item){
-            res.status(404).json({message: 'El item que se quiere eliminar no se encuentra.'});
+            res.status(404).json({message: 'El item que se quiere eliminar no se encuentra'});
             return;
         }
     
         if(!isItemFromUser(req.headers.authorization.split(' ')[1], item.ownerUserId)){
-            res.status(401).json({message: 'No está autorizado para eliminar el item.'});
+            res.status(401).json({message: 'No está autorizado para eliminar el item'});
             return;      
         }
 

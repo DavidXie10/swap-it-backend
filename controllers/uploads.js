@@ -103,7 +103,7 @@ exports.deleteUrls = (req, res) => {
                     "Foto imaginaria"
                 ]
             },
-            message: "El campo urls debe ser un arreglo de hileras de caracteres, con un mínimo de 1 y un máximo de 3, y el formato de las hileras debe ser una url."
+            message: "El campo urls debe ser un arreglo de hileras de caracteres, con un mínimo de 1 y un máximo de 3, y el formato de las hileras debe ser una url"
         }
     } 
     #swagger.responses[500] = {

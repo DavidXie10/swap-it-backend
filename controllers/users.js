@@ -213,9 +213,9 @@ exports.getItemsByUser = (req, res) => {
         }
     } 
     #swagger.responses[401] = {
-        description: 'Unauthorized. User is not authenticated',
+        description: 'Unauthorized. User is not authenticated or has invalid credentials',
         schema: {
-            message: 'Credenciales inválidas',
+            message: 'No tiene los permisos para acceder a los artículos solicitados',
         }
     } 
     #swagger.responses[500] = {
@@ -227,8 +227,8 @@ exports.getItemsByUser = (req, res) => {
     */
 
     try {
-        if(isItemFromUser(req.headers.authorization.split(' ')[1], req.params.userId)){
-            res.status(401).send('No tiene los permisos para acceder a los artículos solicitados');
+        if(!isItemFromUser(req.headers.authorization.split(' ')[1], parseInt(req.params.userId))){
+            res.status(401).json({message: 'No tiene los permisos para acceder a los artículos solicitados'});
             return;
         }
         const items = findItemsByUser(req.params.userId);

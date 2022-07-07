@@ -420,13 +420,13 @@
             "description": "Bad Request"
           },
           "401": {
-            "description": "Unauthorized. User is not authenticated",
+            "description": "Unauthorized. User is not authenticated or has invalid credentials",
             "schema": {
               "type": "object",
               "properties": {
                 "message": {
                   "type": "string",
-                  "example": "Credenciales inválidas"
+                  "example": "No tiene los permisos para acceder a los artículos solicitados"
                 }
               },
               "xml": {
@@ -844,7 +844,7 @@
               "properties": {
                 "message": {
                   "type": "string",
-                  "example": "No está autorizado para editar el item."
+                  "example": "No está autorizado para editar el item"
                 }
               },
               "xml": {
@@ -913,7 +913,7 @@
                 },
                 "message": {
                   "type": "string",
-                  "example": "Debe especificar la provincia en la que se encuentra con un número: San José[1], Alajuela[2], Cartago[3], Heredia[4], Guanacaste[5], Puntarenas[6], Limón[7]."
+                  "example": "Debe especificar la provincia en la que se encuentra con un número: San José[1], Alajuela[2], Cartago[3], Heredia[4], Guanacaste[5], Puntarenas[6], Limón[7]"
                 }
               },
               "xml": {
@@ -971,7 +971,7 @@
               "properties": {
                 "message": {
                   "type": "string",
-                  "example": "No está autorizado para eliminar el item."
+                  "example": "No está autorizado para eliminar el item"
                 }
               },
               "xml": {
@@ -1430,7 +1430,7 @@
                 },
                 "message": {
                   "type": "string",
-                  "example": "El campo urls debe ser un arreglo de hileras de caracteres, con un mínimo de 1 y un máximo de 3, y el formato de las hileras debe ser una url."
+                  "example": "El campo urls debe ser un arreglo de hileras de caracteres, con un mínimo de 1 y un máximo de 3, y el formato de las hileras debe ser una url"
                 }
               },
               "xml": {

@@ -32,7 +32,7 @@ exports.upload = multer({
 
 exports.uploadsErrorHandler = (error, req, res, next) => {
     if (error) {
-        res.status(400).json({ error: true, message: 'Solo se puede subir un máximo de 3 imágenes y solo se permiten subir imágenes .png, .jpg o .jpeg.'})
+        res.status(400).json({ error: true, message: 'Solo se puede subir un máximo de 3 imágenes y solo se permiten subir imágenes .png, .jpg o .jpeg. Error: ' + error})
     } else {
         next();
     }
