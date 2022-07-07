@@ -234,45 +234,6 @@
         "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/956b6d2c-b756-42e2-b3ab-f4c47bb12262.jpg"]
     },
     {
-        "itemId": 71,
-        "ownerFullName": "Juan Ignacio Pacheco Castro",
-    	"ownerUserId": 2,
-        "name": "Organizador de escritorio",
-        "location": 1,
-        "acquisitionDate": "2022-02-07",
-        "description": "Organizador de metal con 8 compartimientos y 1 mini cajón",
-        "wishlist": "Agenda",
-        "itemState": 1,
-        "category": 5,
-        "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/9d933524-ecd4-45b9-b356-a0fd51d566a7.jpg"]
-    },
-    {
-        "itemId": 72,
-        "ownerFullName": "Juan Ignacio Pacheco Castro",
-    	"ownerUserId": 2,
-        "name": "Organizador de escritorio",
-        "location": 1,
-        "acquisitionDate": "2022-02-07",
-        "description": "Organizador de metal con 8 compartimientos y 1 mini cajón",
-        "wishlist": "Agenda",
-        "itemState": 1,
-        "category": 5,
-        "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/9d933524-ecd4-45b9-b356-a0fd51d566a7.jpg"]
-    },
-    {
-        "itemId": 73,
-        "ownerFullName": "David Xie Li",
-    	"ownerUserId": 1,
-        "name": "Silla para oficina",
-        "location": 2,
-        "acquisitionDate": "2021-12-20",
-        "description": "Silla ergonómica giratoria de oficina para computadora, de malla, con brazos, soporte lumbar, respaldo medio, ajustable, para mujeres, adultos",
-        "wishlist": "Celular",
-        "itemState": 2,
-        "category": 5,
-        "photoUrls": ["https://ci0137.s3.amazonaws.com/swap-it/uploads/956b6d2c-b756-42e2-b3ab-f4c47bb12262.jpg"]
-    },
-    {
         "itemId": 19,
         "ownerFullName": "Sol Valle Vega",
     	"ownerUserId": 3,
